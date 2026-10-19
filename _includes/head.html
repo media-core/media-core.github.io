@@ -10,6 +10,28 @@
   <!-- GD -->
   <meta name="robots" content="max-image-preview:large">
 
+  <!-- PILIH BANNER ARTIKEL OTOMATIS -->
+  {% assign banners = site.static_files
+    | where_exp: "file", "file.path contains '/assets/images/banner-'" %}
+
+  {% assign banner_count = banners.size %}
+  {% assign selected_image = nil %}
+
+  {% if page.image %}
+    {% assign selected_image = page.image %}
+  {% elsif page.layout == "post" and banner_count > 0 %}
+    {% assign banner_index = page.slug.size | modulo: banner_count %}
+    {% assign selected_image = banners[banner_index].path %}
+  {% endif %}
+
+  <!-- OPEN GRAPH IMAGE -->
+  {% if selected_image %}
+    {% assign image_url = selected_image | absolute_url %}
+    <meta property="og:image" content="{{ image_url }}">
+    <meta name="twitter:image" content="{{ image_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+  {% endif %}
+
   <!-- CSS WEBSITE -->
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
 
