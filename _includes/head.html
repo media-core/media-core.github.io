@@ -3,15 +3,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="google-site-verification" content="orb1E_kpY4hZ6CYZZFzz4ikbe1ejgXZnGzKrJEpfgfA" />
+  <meta name="google-site-verification"
+        content="orb1E_kpY4hZ6CYZZFzz4ikbe1ejgXZnGzKrJEpfgfA">
 
-  <!-- SEO JEKYLL -->
+  <!-- SEO OTOMATIS JEKYLL -->
   {% seo %}
 
   <!-- GD -->
   <meta name="robots" content="max-image-preview:large">
 
-  <!-- PILIH BANNER ARTIKEL OTOMATIS -->
+  <!-- PILIH BANNER ARTIKEL -->
   {% assign banners = site.static_files
     | where_exp: "file", "file.path contains '/assets/images/banner-'" %}
 
@@ -25,16 +26,17 @@
     {% assign selected_image = banners[banner_index].path %}
   {% endif %}
 
-<!-- OPEN GRAPH IMAGE -->
-{% if selected_image %}
-  {% assign image_url = selected_image | absolute_url %}
-  <meta property="og:image" content="{{ image_url }}">
-  <meta name="twitter:image" content="{{ image_url }}">
-{% endif %}
+  <!-- GAMBAR UNTUK ARTIKEL TANPA IMAGE MANUAL -->
+  {% if selected_image and page.image == nil %}
+    {% assign image_url = selected_image | absolute_url %}
+    <meta property="og:image" content="{{ image_url }}">
+    <meta name="twitter:image" content="{{ image_url }}">
+  {% endif %}
 
-  <!-- CSS WEBSITE -->
-  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <!-- CSS -->
+  <link rel="stylesheet"
+        href="{{ '/assets/main.css' | relative_url }}">
 
-  <!-- RSS FEED -->
+  <!-- RSS -->
   {% feed_meta %}
 </head>
