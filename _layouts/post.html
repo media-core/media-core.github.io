@@ -5,7 +5,7 @@ layout: default
 {% comment %}
 MEDIA CORE - CUSTOM POST LAYOUT
 Banner otomatis, tombol login/daftar,
-judul artikel, metadata, dan konten.
+judul artikel, metadata penulis, dan konten.
 {% endcomment %}
 
 <article class="post custom-post">
@@ -50,37 +50,38 @@ judul artikel, metadata, dan konten.
   <!-- TOMBOL LOGIN DAN DAFTAR -->
   <!-- ========================== -->
 
-{% if page.login_url or page.daftar_url %}
+  {% if page.login_url or page.daftar_url %}
 
-<nav class="account-buttons"
-     aria-label="Tautan akun eksternal">
+  <nav class="account-buttons"
+       aria-label="Tautan akun eksternal">
 
-  {% if page.login_url %}
-  <a href="{{ page.login_url | escape }}"
-     class="account-btn"
-     target="_blank"
-     rel="noopener noreferrer sponsored">
-    LOGIN
-  </a>
-  {% endif %}
+    {% if page.login_url %}
+    <a href="{{ page.login_url | escape }}"
+       class="account-btn"
+       target="_blank"
+       rel="noopener noreferrer sponsored">
+      LOGIN
+    </a>
+    {% endif %}
 
-  {% if page.daftar_url %}
-  <a href="{{ page.daftar_url | escape }}"
-     class="account-btn"
-     target="_blank"
-     rel="noopener noreferrer sponsored">
-    DAFTAR
-  </a>
-  {% endif %}
+    {% if page.daftar_url %}
+    <a href="{{ page.daftar_url | escape }}"
+       class="account-btn"
+       target="_blank"
+       rel="noopener noreferrer sponsored">
+      DAFTAR
+    </a>
+    {% endif %}
 
-</nav>
+  </nav>
 
   <p class="external-link-note">
-    KLAIM KEMENANGANMU SEKARANG!
+    PLATFORM PILIHAN MILENIAL 2026
   </p>
 
   {% endif %}
-  
+
+
   <!-- ========================== -->
   <!-- JUDUL ARTIKEL -->
   <!-- ========================== -->
@@ -91,6 +92,7 @@ judul artikel, metadata, dan konten.
       {{ page.title | escape }}
     </h1>
 
+    <!-- TANGGAL DAN KATEGORI -->
     <div class="article-meta">
 
       <time datetime="{{ page.date | date_to_xmlschema }}">
@@ -104,6 +106,13 @@ judul artikel, metadata, dan konten.
       {% endif %}
 
     </div>
+
+    <!-- NAMA PENULIS ARTIKEL -->
+    {% if page.author %}
+      <p class="article-author">
+        Ditulis oleh: {{ page.author | escape }}
+      </p>
+    {% endif %}
 
   </header>
 
@@ -240,6 +249,18 @@ judul artikel, metadata, dan konten.
 
 .article-category {
   font-weight: 500;
+}
+
+/* ==========================
+   NAMA PENULIS ARTIKEL
+========================== */
+
+.article-author {
+  font-size: 14px;
+  color: #777;
+  margin-top: 8px;
+  margin-bottom: 0;
+  line-height: 1.6;
 }
 
 /* ==========================
