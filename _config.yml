@@ -1,0 +1,12 @@
+
+title: "Media Core"
+description: "Portal informasi, berita, dan artikel terbaru"
+url: "https://media-core.github.io"
+baseurl: ""
+lang: id-ID
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
