@@ -1,12 +1,18 @@
 
+# INFORMASI WEBSITE
 title: "Media Core"
 description: "Portal informasi, berita, dan artikel terbaru"
 url: "https://media-core.github.io"
 baseurl: ""
 lang: id-ID
 
+# TEMA WEBSITE
 theme: minima
 
+# PLUGIN JEKYLL
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+
+# URL ARTIKEL TANPA TANGGAL DAN KATEGORI
+permalink: /:title/
