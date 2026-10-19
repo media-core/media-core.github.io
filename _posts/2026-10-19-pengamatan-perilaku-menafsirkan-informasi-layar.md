@@ -3,8 +3,8 @@ layout: post
 title: "Pengamatan Perilaku Mengungkap Cara Individu Menafsirkan Informasi Dari Layar"
 date: 2026-10-19 18:00:00 +0700
 categories: [General]
-description: "Pengamatan perilaku membantu memahami bagaimana perhatian, pengalaman, dan konteks layar membentuk cara individu menafsirkan informasi digital."
-
+description: "Pengamatan perilaku membantu memahami bagaimana individu menafsirkan informasi digital."
+image: "/assets/images/banner-7.jpg"
 login_url: "https://t.ly/genduthoki88"
 daftar_url: "https://t.ly/genduthoki88"
 ---
