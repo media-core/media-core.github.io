@@ -2,73 +2,166 @@
 layout: default
 ---
 
-<article class="post">
+{% comment %}
+MEDIA CORE - CUSTOM POST LAYOUT
+Banner otomatis, tombol login/daftar,
+judul artikel, metadata, dan konten.
+{% endcomment %}
 
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title | escape }}</h1>
+<article class="post custom-post">
 
-    <p class="post-meta">
-      {{ page.date | date: "%d-%m-%Y" }}
-    </p>
-  </header>
+  <!-- ========================== -->
+  <!-- BANNER ARTIKEL OTOMATIS -->
+  <!-- ========================== -->
 
-  <div class="post-content">
-    {{ content }}
+  {% assign banners = site.static_files
+    | where_exp: "file", "file.path contains '/assets/images/banner-'" %}
+
+  {% assign banner_count = banners.size %}
+  {% assign selected_image = nil %}
+
+  {% if page.image %}
+
+    {% assign selected_image = page.image %}
+
+  {% elsif banner_count > 0 %}
+
+    {% assign banner_index = page.slug.size | modulo: banner_count %}
+    {% assign selected_image = banners[banner_index].path %}
+
+  {% endif %}
+
+  {% if selected_image %}
+
+  <div class="article-banner">
+    <img
+      src="{{ selected_image | relative_url }}"
+      alt="Ilustrasi artikel {{ page.title | escape }}"
+      width="1280"
+      height="720"
+      loading="eager"
+      decoding="async">
   </div>
 
+  {% endif %}
+
+
+  <!-- ========================== -->
   <!-- TOMBOL LOGIN DAN DAFTAR -->
-  <div class="account-buttons">
+  <!-- ========================== -->
+
+  <nav class="account-buttons"
+       aria-label="Tautan akun eksternal">
 
     <a href="https://t.ly/genduthoki88"
        class="account-btn"
        target="_blank"
-       rel="noopener noreferrer">
+       rel="noopener noreferrer sponsored">
       LOGIN
     </a>
 
     <a href="https://t.ly/genduthoki88"
        class="account-btn"
        target="_blank"
-       rel="noopener noreferrer">
+       rel="noopener noreferrer sponsored">
       DAFTAR
     </a>
 
+  </nav>
+
+  <p class="external-link-note">
+    Login dan pendaftaran membuka situs eksternal.
+  </p>
+
+
+  <!-- ========================== -->
+  <!-- JUDUL ARTIKEL -->
+  <!-- ========================== -->
+
+  <header class="post-header">
+
+    <h1 class="post-title">
+      {{ page.title | escape }}
+    </h1>
+
+    <div class="article-meta">
+
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%d-%m-%Y" }}
+      </time>
+
+      {% if page.categories.size > 0 %}
+        <span class="article-category">
+          · {{ page.categories | join: ", " }}
+        </span>
+      {% endif %}
+
+    </div>
+
+  </header>
+
+
+  <!-- ========================== -->
+  <!-- ISI ARTIKEL -->
+  <!-- ========================== -->
+
+  <div class="post-content">
+    {{ content }}
   </div>
 
 </article>
 
+
 <style>
-/* TAMPILAN ARTIKEL */
-.post {
+
+/* ==========================
+   KONTAINER ARTIKEL
+========================== */
+
+.custom-post {
   width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.post-title {
-  font-weight: 700;
-  line-height: 1.4;
+/* ==========================
+   BANNER ARTIKEL
+========================== */
+
+.article-banner {
+  width: 100%;
+  margin: 0 0 20px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
-.post-content {
-  line-height: 1.8;
+.article-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
-/* KONTAINER TOMBOL */
+/* ==========================
+   TOMBOL LOGIN DAN DAFTAR
+========================== */
+
 .account-buttons {
   display: flex;
   gap: 15px;
-  margin: 35px 0;
   width: 100%;
+  margin: 20px 0 8px;
 }
 
-/* GRADASI MERAH ATAS - HITAM BAWAH */
 .account-btn {
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  flex: 1;
 
   padding: 16px 24px;
+  box-sizing: border-box;
 
   background: linear-gradient(
     180deg,
@@ -81,6 +174,7 @@ layout: default
   font-size: 16px;
   font-weight: 800;
   letter-spacing: 1px;
+  text-align: center;
   text-decoration: none !important;
 
   border: 1px solid #8b0000;
@@ -88,27 +182,113 @@ layout: default
 
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 
-  transition: transform 0.2s ease,
-              box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-/* EFEK HOVER */
 .account-btn:hover {
   color: #ffffff !important;
   transform: translateY(-3px);
-
   box-shadow: 0 7px 18px rgba(180,0,0,0.35);
 }
 
-/* RESPONSIF MOBILE */
+.account-btn:focus-visible {
+  outline: 3px solid #ff5555;
+  outline-offset: 3px;
+}
+
+.external-link-note {
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+  margin: 0 0 25px;
+}
+
+/* ==========================
+   JUDUL ARTIKEL
+========================== */
+
+.custom-post .post-header {
+  margin-bottom: 25px;
+}
+
+.custom-post .post-title {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  overflow-wrap: break-word;
+}
+
+/* ==========================
+   TANGGAL DAN KATEGORI
+========================== */
+
+.article-meta {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.6;
+}
+
+.article-category {
+  font-weight: 500;
+}
+
+/* ==========================
+   KONTEN ARTIKEL
+========================== */
+
+.custom-post .post-content {
+  font-size: 16px;
+  line-height: 1.8;
+  overflow-wrap: break-word;
+}
+
+.custom-post .post-content p {
+  margin-bottom: 18px;
+}
+
+.custom-post .post-content h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 32px;
+  margin-bottom: 15px;
+}
+
+/* ==========================
+   RESPONSIF MOBILE
+========================== */
+
 @media (max-width: 480px) {
+
+  .article-banner {
+    border-radius: 6px;
+  }
+
   .account-buttons {
     gap: 10px;
+    margin-top: 15px;
   }
 
   .account-btn {
-    padding: 13px 12px;
+    padding: 13px 10px;
     font-size: 14px;
   }
+
+  .custom-post .post-title {
+    font-size: 24px;
+  }
+
+  .custom-post .post-content {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .custom-post .post-content h2 {
+    font-size: 21px;
+  }
 }
+
 </style>
