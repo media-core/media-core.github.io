@@ -1,0 +1,114 @@
+---
+layout: default
+---
+
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+
+    <p class="post-meta">
+      {{ page.date | date: "%d-%m-%Y" }}
+    </p>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <!-- TOMBOL LOGIN DAN DAFTAR -->
+  <div class="account-buttons">
+
+    <a href="https://t.ly/genduthoki88"
+       class="account-btn"
+       target="_blank"
+       rel="noopener noreferrer">
+      LOGIN
+    </a>
+
+    <a href="https://t.ly/genduthoki88"
+       class="account-btn"
+       target="_blank"
+       rel="noopener noreferrer">
+      DAFTAR
+    </a>
+
+  </div>
+
+</article>
+
+<style>
+/* TAMPILAN ARTIKEL */
+.post {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.post-title {
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.post-content {
+  line-height: 1.8;
+}
+
+/* KONTAINER TOMBOL */
+.account-buttons {
+  display: flex;
+  gap: 15px;
+  margin: 35px 0;
+  width: 100%;
+}
+
+/* GRADASI MERAH ATAS - HITAM BAWAH */
+.account-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+
+  padding: 16px 24px;
+
+  background: linear-gradient(
+    180deg,
+    #ff2020 0%,
+    #b30000 45%,
+    #000000 100%
+  );
+
+  color: #ffffff !important;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-decoration: none !important;
+
+  border: 1px solid #8b0000;
+  border-radius: 8px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+/* EFEK HOVER */
+.account-btn:hover {
+  color: #ffffff !important;
+  transform: translateY(-3px);
+
+  box-shadow: 0 7px 18px rgba(180,0,0,0.35);
+}
+
+/* RESPONSIF MOBILE */
+@media (max-width: 480px) {
+  .account-buttons {
+    gap: 10px;
+  }
+
+  .account-btn {
+    padding: 13px 12px;
+    font-size: 14px;
+  }
+}
+</style>
