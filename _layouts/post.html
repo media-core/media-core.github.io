@@ -50,30 +50,37 @@ judul artikel, metadata, dan konten.
   <!-- TOMBOL LOGIN DAN DAFTAR -->
   <!-- ========================== -->
 
-  <nav class="account-buttons"
-       aria-label="Tautan akun eksternal">
+{% if page.login_url or page.daftar_url %}
 
-    <a href="https://t.ly/genduthoki88"
-       class="account-btn"
-       target="_blank"
-       rel="noopener noreferrer sponsored">
-      LOGIN
-    </a>
+<nav class="account-buttons"
+     aria-label="Tautan akun eksternal">
 
-    <a href="https://t.ly/genduthoki88"
-       class="account-btn"
-       target="_blank"
-       rel="noopener noreferrer sponsored">
-      DAFTAR
-    </a>
+  {% if page.login_url %}
+  <a href="{{ page.login_url | escape }}"
+     class="account-btn"
+     target="_blank"
+     rel="noopener noreferrer sponsored">
+    LOGIN
+  </a>
+  {% endif %}
 
-  </nav>
+  {% if page.daftar_url %}
+  <a href="{{ page.daftar_url | escape }}"
+     class="account-btn"
+     target="_blank"
+     rel="noopener noreferrer sponsored">
+    DAFTAR
+  </a>
+  {% endif %}
+
+</nav>
 
   <p class="external-link-note">
     KLAIM KEMENANGANMU SEKARANG!
   </p>
 
-
+  {% endif %}
+  
   <!-- ========================== -->
   <!-- JUDUL ARTIKEL -->
   <!-- ========================== -->
