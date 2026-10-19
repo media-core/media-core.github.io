@@ -5,6 +5,7 @@ date: 2026-10-19 18:00:00 +0700
 categories: [General]
 description: "Pengamatan perilaku membantu memahami bagaimana individu menafsirkan informasi digital."
 image: "/assets/images/banner-7.jpg"
+author: "Tim Redaksi Media Core"
 login_url: "https://t.ly/genduthoki88"
 daftar_url: "https://t.ly/genduthoki88"
 ---
