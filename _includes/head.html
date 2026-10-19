@@ -25,13 +25,12 @@
     {% assign selected_image = banners[banner_index].path %}
   {% endif %}
 
-  <!-- OPEN GRAPH IMAGE -->
-  {% if selected_image %}
-    {% assign image_url = selected_image | absolute_url %}
-    <meta property="og:image" content="{{ image_url }}">
-    <meta name="twitter:image" content="{{ image_url }}">
-    <meta name="twitter:card" content="summary_large_image">
-  {% endif %}
+<!-- OPEN GRAPH IMAGE -->
+{% if selected_image %}
+  {% assign image_url = selected_image | absolute_url %}
+  <meta property="og:image" content="{{ image_url }}">
+  <meta name="twitter:image" content="{{ image_url }}">
+{% endif %}
 
   <!-- CSS WEBSITE -->
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
