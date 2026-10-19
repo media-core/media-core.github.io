@@ -1,4 +1,3 @@
-
 # INFORMASI WEBSITE
 title: "Media Core"
 description: "Portal informasi, berita, dan artikel terbaru"
@@ -17,3 +16,7 @@ plugins:
 
 # URL ARTIKEL TANPA TANGGAL DAN KATEGORI
 permalink: /:title/
+
+# TWITTER CARD GAMBAR BESAR
+twitter:
+  card: summary_large_image
