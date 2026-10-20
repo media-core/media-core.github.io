@@ -7,7 +7,7 @@ title: Beranda
 /* MEDIA CORE: BERANDA */
 .mc-home { min-width: 0; }
 .mc-home *, .mc-home *::before, .mc-home *::after { box-sizing: border-box; }
-.mc-highlight { margin: 0 0 32px; overflow: hidden; border: 1px solid #d9e8fc; border-radius: 9px; background: #fff; box-shadow: 0 3px 12px rgba(0,65,160,.12); }
+.mc-highlight { margin: 0 0 24px; overflow: hidden; border: 1px solid #d9e8fc; border-radius: 9px; background: #fff; box-shadow: 0 3px 12px rgba(0,65,160,.12); }
 .mc-highlight-heading { display: flex; align-items: center; gap: 12px; margin: 0; padding: 13px 18px; color: #fff; background: linear-gradient(110deg,#071e59 0%,#0755b8 48%,#168cf0 100%); font-size: 20px; font-weight: 800; letter-spacing: .4px; }
 .mc-highlight-icon { display: inline-grid; grid-template-columns: repeat(2,8px); gap: 3px; flex: none; }
 .mc-highlight-icon span { display: block; width: 8px; height: 8px; background: #fff; opacity: .95; }
@@ -60,38 +60,6 @@ title: Beranda
 {% assign mc_posts = site.posts | sort: "date" | reverse %}
 
 <div class="mc-home">
-  <!-- HIGHLIGHT: 5 ARTIKEL TERBARU -->
-  {% if mc_posts.size > 0 %}
-  <section class="mc-highlight" aria-label="Highlight berita terbaru">
-    <h2 class="mc-highlight-heading">
-      <span class="mc-highlight-icon" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-      HIGHLIGHT
-    </h2>
-    <div class="mc-highlight-track">
-      <div class="mc-highlight-marquee">
-        {% for copy in (1..2) %}
-        <div class="mc-highlight-group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
-          {% for post in mc_posts limit:5 %}
-            {% assign highlight_image = post.image %}
-            {% unless highlight_image %}
-              {% if mc_banner_count > 0 %}
-                {% assign highlight_index = post.slug.size | modulo: mc_banner_count %}
-                {% assign highlight_image = mc_banners[highlight_index].path %}
-              {% endif %}
-            {% endunless %}
-            <a class="mc-highlight-item" href="{{ post.url | relative_url }}" {% if copy == 2 %}tabindex="-1"{% endif %}>
-              {% if highlight_image %}<img src="{{ highlight_image | relative_url }}" alt="" width="52" height="36" loading="lazy">{% endif %}
-              <span>{{ post.title | escape }}</span>
-              <span class="mc-highlight-separator" aria-hidden="true">•</span>
-            </a>
-          {% endfor %}
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
   <section class="mc-intro">
     <h1>Selamat Datang di Media Core</h1>
     <p>Media Core adalah portal informasi yang menyajikan berita dan artikel terbaru.</p>
@@ -100,6 +68,37 @@ title: Beranda
 
   <div class="mc-content">
     <section class="mc-latest" aria-label="Artikel terbaru">
+        <!-- HIGHLIGHT: 5 ARTIKEL TERBARU -->
+        {% if mc_posts.size > 0 %}
+        <section class="mc-highlight" aria-label="Highlight berita terbaru">
+          <h2 class="mc-highlight-heading">
+            <span class="mc-highlight-icon" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            HIGHLIGHT
+          </h2>
+          <div class="mc-highlight-track">
+            <div class="mc-highlight-marquee">
+              {% for copy in (1..2) %}
+              <div class="mc-highlight-group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
+                {% for post in mc_posts limit:5 %}
+                  {% assign highlight_image = post.image %}
+                  {% unless highlight_image %}
+                    {% if mc_banner_count > 0 %}
+                      {% assign highlight_index = post.slug.size | modulo: mc_banner_count %}
+                      {% assign highlight_image = mc_banners[highlight_index].path %}
+                    {% endif %}
+                  {% endunless %}
+                  <a class="mc-highlight-item" href="{{ post.url | relative_url }}" {% if copy == 2 %}tabindex="-1"{% endif %}>
+                    {% if highlight_image %}<img src="{{ highlight_image | relative_url }}" alt="" width="52" height="36" loading="lazy">{% endif %}
+                    <span>{{ post.title | escape }}</span>
+                    <span class="mc-highlight-separator" aria-hidden="true">•</span>
+                  </a>
+                {% endfor %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </section>
+        {% endif %}
       <h2>Artikel Terbaru</h2>
       <div class="mc-article-grid">
         {% for post in mc_posts limit:10 %}
