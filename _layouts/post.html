@@ -46,9 +46,11 @@ judul artikel, metadata penulis, dan konten.
   {% endif %}
 
 
-  <!-- ========================== -->
-  <!-- TOMBOL LOGIN DAN DAFTAR -->
-  <!-- ========================== -->
+<!-- ========================== -->
+<!-- TOMBOL LOGIN DAN DAFTAR -->
+<!-- ========================== -->
+
+{% unless page.hide_buttons == true %}
 
   {% if page.login_url or page.daftar_url %}
 
@@ -81,6 +83,7 @@ judul artikel, metadata penulis, dan konten.
 
   {% endif %}
 
+{% endunless %}
 
   <!-- ========================== -->
   <!-- JUDUL ARTIKEL -->
