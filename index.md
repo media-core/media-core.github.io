@@ -7,22 +7,28 @@ title: Beranda
 /* MEDIA CORE: BERANDA */
 .mc-home { min-width: 0; }
 .mc-home *, .mc-home *::before, .mc-home *::after { box-sizing: border-box; }
-.mc-highlight { margin: 0 0 24px; overflow: hidden; border: 1px solid #d9e8fc; border-radius: 9px; background: #fff; box-shadow: 0 3px 12px rgba(0,65,160,.12); }
-.mc-highlight-heading { display: flex; align-items: center; gap: 12px; margin: 0; padding: 13px 18px; color: #fff; background: linear-gradient(110deg,#071e59 0%,#0755b8 48%,#168cf0 100%); font-size: 20px; font-weight: 800; letter-spacing: .4px; }
+
+/* HIGHLIGHT: LEBAR PENUH AREA KONTEN, PROPORSI BARU */
+.mc-highlight { width: 100%; margin: 0 0 26px; overflow: hidden; border: 1px solid #d9e8fc; border-radius: 10px; background: #fff; box-shadow: 0 4px 16px rgba(0,65,160,.12); }
+.mc-highlight-heading { display: flex; align-items: center; gap: 12px; min-height: 54px; margin: 0; padding: 12px 20px; color: #fff; background: linear-gradient(110deg,#10245e 0%,#2053ac 50%,#3988e9 100%); font-size: 20px; line-height: 1.3; font-weight: 800; letter-spacing: .5px; }
 .mc-highlight-icon { display: inline-grid; grid-template-columns: repeat(2,8px); gap: 3px; flex: none; }
 .mc-highlight-icon span { display: block; width: 8px; height: 8px; background: #fff; opacity: .95; }
-.mc-highlight-track { overflow: hidden; padding: 13px 0; }
-.mc-highlight-marquee { display: flex; width: max-content; animation: mc-marquee 40s linear infinite; }
+.mc-highlight-track { display: flex; align-items: center; min-height: 74px; overflow: hidden; padding: 12px 0; }
+.mc-highlight-marquee { display: flex; align-items: center; width: max-content; animation: mc-marquee 40s linear infinite; }
 .mc-highlight-group { display: flex; flex: none; align-items: center; }
-.mc-highlight-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 22px; color: #17395f; font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.mc-highlight-item { display: inline-flex; align-items: center; gap: 14px; padding: 0 28px; color: #17395f; font-size: 16px; line-height: 1.4; font-weight: 700; text-decoration: none; white-space: nowrap; }
 .mc-highlight-item:hover { color: #0878db; text-decoration: underline; }
-.mc-highlight-item img { width: 52px; height: 36px; flex: none; object-fit: cover; border-radius: 4px; }
+.mc-highlight-item img { display: block; width: 75px; height: 50px; flex: none; object-fit: cover; border-radius: 6px; }
 .mc-highlight-separator { color: #168cf0; font-size: 20px; }
 .mc-highlight:hover .mc-highlight-marquee, .mc-highlight:focus-within .mc-highlight-marquee { animation-play-state: paused; }
 @keyframes mc-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* PERKENALAN */
 .mc-intro { margin-bottom: 32px; }
 .mc-intro h1 { font-size: 32px; line-height: 1.4; }
 .mc-intro p { font-size: 16px; line-height: 1.8; }
+
+/* KONTEN DAN SIDEBAR */
 .mc-content { display: grid; grid-template-columns: minmax(0,1fr) 235px; gap: 24px; align-items: start; }
 .mc-latest, .mc-sidebar { min-width: 0; }
 .mc-latest > h2 { margin: 0 0 20px; }
@@ -50,9 +56,24 @@ title: Beranda
 .mc-button:hover { background: #0b3977; }
 .mc-widget .mc-button { display: block; margin-top: 14px; }
 .mc-all-link { margin: 30px 0; text-align: center; }
-@media (max-width: 760px) { .mc-content { grid-template-columns: minmax(0,1fr); } }
-@media (max-width: 600px) { .mc-intro h1 { font-size: 26px; } .mc-article-grid { grid-template-columns: 1fr; } .mc-highlight-heading { font-size: 17px; } .mc-highlight-item { font-size: 13px; } }
-@media (prefers-reduced-motion: reduce) { .mc-highlight-marquee { animation: none; width: auto; } .mc-highlight-group { flex-wrap: wrap; } .mc-highlight-group[aria-hidden="true"] { display: none; } .mc-highlight-item { white-space: normal; padding: 7px 16px; } }
+
+@media (max-width: 760px) {
+  .mc-content { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 600px) {
+  .mc-intro h1 { font-size: 26px; }
+  .mc-article-grid { grid-template-columns: 1fr; }
+  .mc-highlight-heading { min-height: 48px; padding: 10px 15px; font-size: 17px; }
+  .mc-highlight-track { min-height: 68px; padding: 9px 0; }
+  .mc-highlight-item { gap: 10px; padding: 0 18px; font-size: 14px; }
+  .mc-highlight-item img { width: 65px; height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mc-highlight-marquee { animation: none; width: auto; }
+  .mc-highlight-group { flex-wrap: wrap; }
+  .mc-highlight-group[aria-hidden="true"] { display: none; }
+  .mc-highlight-item { white-space: normal; padding: 7px 16px; }
+}
 </style>
 
 {% assign mc_banners = site.static_files | where_exp: "file", "file.path contains '/assets/images/banner-'" %}
@@ -66,39 +87,40 @@ title: Beranda
     <p>Temukan berbagai informasi menarik seputar teknologi, bisnis, ekonomi, dan perkembangan dunia digital.</p>
   </section>
 
+  <!-- HIGHLIGHT SELEBAR KONTEN, TEPAT DI ATAS ARTIKEL TERBARU -->
+  {% if mc_posts.size > 0 %}
+  <section class="mc-highlight" aria-label="Highlight berita terbaru">
+    <h2 class="mc-highlight-heading">
+      <span class="mc-highlight-icon" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+      HIGHLIGHT
+    </h2>
+    <div class="mc-highlight-track">
+      <div class="mc-highlight-marquee">
+        {% for copy in (1..2) %}
+        <div class="mc-highlight-group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
+          {% for post in mc_posts limit:5 %}
+            {% assign highlight_image = post.image %}
+            {% unless highlight_image %}
+              {% if mc_banner_count > 0 %}
+                {% assign highlight_index = post.slug.size | modulo: mc_banner_count %}
+                {% assign highlight_image = mc_banners[highlight_index].path %}
+              {% endif %}
+            {% endunless %}
+            <a class="mc-highlight-item" href="{{ post.url | relative_url }}" {% if copy == 2 %}tabindex="-1"{% endif %}>
+              {% if highlight_image %}<img src="{{ highlight_image | relative_url }}" alt="" width="75" height="50" loading="lazy">{% endif %}
+              <span>{{ post.title | escape }}</span>
+              <span class="mc-highlight-separator" aria-hidden="true">•</span>
+            </a>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
   <div class="mc-content">
     <section class="mc-latest" aria-label="Artikel terbaru">
-        <!-- HIGHLIGHT: 5 ARTIKEL TERBARU -->
-        {% if mc_posts.size > 0 %}
-        <section class="mc-highlight" aria-label="Highlight berita terbaru">
-          <h2 class="mc-highlight-heading">
-            <span class="mc-highlight-icon" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-            HIGHLIGHT
-          </h2>
-          <div class="mc-highlight-track">
-            <div class="mc-highlight-marquee">
-              {% for copy in (1..2) %}
-              <div class="mc-highlight-group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
-                {% for post in mc_posts limit:5 %}
-                  {% assign highlight_image = post.image %}
-                  {% unless highlight_image %}
-                    {% if mc_banner_count > 0 %}
-                      {% assign highlight_index = post.slug.size | modulo: mc_banner_count %}
-                      {% assign highlight_image = mc_banners[highlight_index].path %}
-                    {% endif %}
-                  {% endunless %}
-                  <a class="mc-highlight-item" href="{{ post.url | relative_url }}" {% if copy == 2 %}tabindex="-1"{% endif %}>
-                    {% if highlight_image %}<img src="{{ highlight_image | relative_url }}" alt="" width="52" height="36" loading="lazy">{% endif %}
-                    <span>{{ post.title | escape }}</span>
-                    <span class="mc-highlight-separator" aria-hidden="true">•</span>
-                  </a>
-                {% endfor %}
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-        </section>
-        {% endif %}
       <h2>Artikel Terbaru</h2>
       <div class="mc-article-grid">
         {% for post in mc_posts limit:10 %}
