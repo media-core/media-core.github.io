@@ -1,0 +1,138 @@
+---
+layout: default
+title: Semua Artikel
+permalink: /artikel/
+---
+
+<style>
+.mc-archive, .mc-archive * { box-sizing: border-box; }
+.mc-archive h1 { font-size: 32px; line-height: 1.35; }
+.mc-archive-intro { color: #536275; margin-bottom: 25px; }
+.mc-archive-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.mc-archive-card { min-width:0; overflow:hidden; border:1px solid #e3e8f0; border-radius:10px; background:#fff; }
+.mc-archive-card > a { display:block; }
+.mc-archive-card img { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; }
+.mc-archive-body { padding:18px; }
+.mc-archive-body time { color:#667487; font-size:13px; }
+.mc-archive-body h2 { margin:10px 0; font-size:20px; line-height:1.4; overflow-wrap:anywhere; }
+.mc-archive-body h2 a { color:#182e4c; text-decoration:none; }
+.mc-archive-body h2 a:hover { color:#0755b8; }
+.mc-archive-body p { font-size:14px; line-height:1.7; color:#4c5869; }
+.mc-archive-read { display:inline-block; color:#0755b8; font-weight:700; text-decoration:none; }
+.mc-archive-controls { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:8px; margin:30px 0; }
+.mc-archive-controls a, .mc-archive-controls button { display:inline-block; padding:9px 13px; border:1px solid #bed2ee; border-radius:6px; background:#fff; color:#0755b8; font:inherit; font-size:14px; text-decoration:none; cursor:pointer; }
+.mc-archive-controls [aria-current="page"] { background:#0755b8; color:#fff; border-color:#0755b8; }
+.mc-archive-controls button:disabled { opacity:.4; cursor:default; }
+.mc-archive-status { margin:15px 0; color:#536275; font-size:14px; }
+.mc-archive-empty { display:none; }
+@media(max-width:600px) { .mc-archive-grid { grid-template-columns:1fr; gap:18px; } .mc-archive h1 { font-size:26px; } }
+</style>
+
+{% assign mc_banners = site.static_files | where_exp: "file", "file.path contains '/assets/images/banner-'" %}
+{% assign mc_banner_count = mc_banners.size %}
+{% assign mc_posts = site.posts | sort: 'date' | reverse %}
+{% assign mc_month_names = 'Januari,Februari,Maret,April,Mei,Juni,Juli,Agustus,September,Oktober,November,Desember' | split: ',' %}
+
+<div class="mc-archive" id="mc-archive">
+  <h1>Semua Artikel Media Core</h1>
+  <p class="mc-archive-intro">Jelajahi seluruh artikel, lengkap dengan gambar dan ringkasan. Pilih halaman untuk melihat artikel lainnya.</p>
+  <p id="mc-archive-status" class="mc-archive-status" aria-live="polite"></p>
+  <div id="mc-archive-grid" class="mc-archive-grid">
+    {% for post in mc_posts %}
+      {% assign selected_image = post.image %}
+      {% unless selected_image %}
+        {% if mc_banner_count > 0 %}
+          {% assign banner_index = post.slug.size | modulo: mc_banner_count %}
+          {% assign selected_image = mc_banners[banner_index].path %}
+        {% endif %}
+      {% endunless %}
+      {% assign post_month = post.date | date: '%Y-%m' %}
+      <article class="mc-archive-card" data-month="{{ post_month }}">
+        {% if selected_image %}
+          <a href="{{ post.url | relative_url }}">
+            <img src="{{ selected_image | relative_url }}" alt="{{ post.title | escape }}" width="1280" height="720" loading="lazy" decoding="async">
+          </a>
+        {% endif %}
+        <div class="mc-archive-body">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d-%m-%Y' }}</time>
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+          <p>{% if post.description %}{{ post.description | escape }}{% else %}{{ post.excerpt | strip_html | truncatewords: 25 }}{% endif %}</p>
+          <a class="mc-archive-read" href="{{ post.url | relative_url }}">Baca Selengkapnya →</a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  <nav id="mc-archive-pagination" class="mc-archive-controls" aria-label="Navigasi halaman arsip"></nav>
+  <noscript><p>Aktifkan JavaScript untuk menggunakan navigasi halaman. Semua artikel tetap tersedia dalam daftar di atas.</p></noscript>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var root = document.getElementById('mc-archive');
+  if (!root) return;
+  var all = Array.prototype.slice.call(root.querySelectorAll('.mc-archive-card'));
+  var controls = document.getElementById('mc-archive-pagination');
+  var status = document.getElementById('mc-archive-status');
+  var pageSize = 12;
+  var monthLabels = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+  function selectedMonth() {
+    var match = location.hash.match(/^#bulan-(\d{4})-(\d{2})$/);
+    return match ? match[1] + '-' + match[2] : '';
+  }
+  function currentPage() {
+    var n = Number(new URLSearchParams(location.search).get('page'));
+    return Number.isInteger(n) && n > 0 ? n : 1;
+  }
+  function urlFor(page) {
+    var u = new URL(location.href);
+    if (page === 1) u.searchParams.delete('page');
+    else u.searchParams.set('page', String(page));
+    return u.pathname + u.search + u.hash;
+  }
+  function render() {
+    var month = selectedMonth();
+    var filtered = all.filter(function (item) { return !month || item.dataset.month === month; });
+    var totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+    var page = Math.min(currentPage(), totalPages);
+    all.forEach(function (item) { item.hidden = true; item.style.display = 'none'; });
+    filtered.slice((page - 1) * pageSize, page * pageSize).forEach(function (item) {
+      item.hidden = false;
+      item.style.display = '';
+    });
+    var suffix = '';
+    if (month) {
+      var parts = month.split('-');
+      suffix = ' untuk ' + monthLabels[Number(parts[1]) - 1] + ' ' + parts[0];
+    }
+    status.textContent = filtered.length ? 'Menampilkan ' + ((page - 1) * pageSize + 1) + '–' + Math.min(page * pageSize, filtered.length) + ' dari ' + filtered.length + ' artikel' + suffix + '.' : 'Belum ada artikel' + suffix + '.';
+    controls.replaceChildren();
+    function add(label, target, active, disabled) {
+      var el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = label;
+      el.disabled = !!disabled;
+      if (active) el.setAttribute('aria-current', 'page');
+      el.addEventListener('click', function () {
+        history.pushState({}, '', urlFor(target));
+        render();
+        root.scrollIntoView({ behavior: 'auto', block: 'start' });
+      });
+      controls.appendChild(el);
+    }
+    if (totalPages > 1) {
+      add('‹ Sebelumnya', page - 1, false, page === 1);
+      for (var i = 1; i <= totalPages; i++) add(String(i), i, i === page, false);
+      add('Berikutnya ›', page + 1, false, page === totalPages);
+    }
+  }
+  window.addEventListener('popstate', render);
+  window.addEventListener('hashchange', function () {
+    var u = new URL(location.href);
+    u.searchParams.delete('page');
+    history.replaceState({}, '', u.pathname + u.search + u.hash);
+    render();
+  });
+  render();
+})();
+</script>
