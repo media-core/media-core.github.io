@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Permainan Digital dan Keamanan Akun: Panduan Mengenali Risiko Platform"
-date: 2026-10-22 19:00:00 +0700
+date: 2026-10-22 18:00:00 +0700
 categories: [General]
 description: "Keamanan akun permainan digital bergantung pada kebiasaan pengguna dan perlindungan platform, mulai dari kata sandi hingga pemeriksaan tautan dan transaksi."
 image: "/assets/images/banner-mahjong30.jpg"
