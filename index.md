@@ -6,30 +6,39 @@ title: Beranda
 <style>
 /* MEDIA CORE PREMIUM — hanya untuk beranda */
 body:has(.mc-home) { background:#f2f6ff; }
-body:has(.mc-home) .page-content > .wrapper { max-width:1320px; padding-left:22px; padding-right:22px; }
-body:has(.mc-home) .page-content { padding-top:24px; }
+body:has(.mc-home) .page-content > .wrapper { max-width:1120px; padding-left:22px; padding-right:22px; }
+body:has(.mc-home) .page-content { padding-top:18px; }
 .mc-home,.mc-home * { box-sizing:border-box; }
 .mc-home { color:#10254b; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; }
 .mc-home a { text-decoration:none; }
-.mc-hero { position:relative; isolation:isolate; overflow:hidden; min-height:365px; display:flex; align-items:center; padding:50px 5.5%; border-radius:23px; background:radial-gradient(circle at 83% 30%,#2451a8 0%,transparent 35%),linear-gradient(120deg,#061734 0%,#102a62 57%,#061734 100%); color:white; box-shadow:0 18px 38px rgba(8,34,83,.18); }
+.mc-hero { position:relative; isolation:isolate; overflow:hidden; min-height:235px; display:flex; align-items:center; padding:28px 4%; border-radius:16px; background:radial-gradient(circle at 83% 30%,#2451a8 0%,transparent 35%),linear-gradient(120deg,#061734 0%,#102a62 57%,#061734 100%); color:white; box-shadow:0 18px 38px rgba(8,34,83,.18); }
 .mc-hero:before { content:""; position:absolute; z-index:-1; right:-80px; top:-180px; width:530px; height:530px; border:2px solid rgba(40,225,255,.25); border-radius:50%; box-shadow:0 0 0 48px rgba(44,121,255,.06),0 0 0 105px rgba(44,121,255,.045); }
 .mc-hero:after { content:""; position:absolute; z-index:-1; right:10%; bottom:-170px; width:430px; height:360px; border-radius:50%; background:#00d9ff; filter:blur(110px); opacity:.13; }
-.mc-hero-copy { max-width:750px; position:relative; z-index:1; }
-.mc-eyebrow { margin:0 0 18px; color:#42e7ff; font-size:13px; letter-spacing:3px; font-weight:850; text-transform:uppercase; }
-.mc-hero h1 { margin:0 0 20px; color:#fff; font-size:clamp(29px,4vw,53px); line-height:1.14; font-weight:850; letter-spacing:-1.4px; }
+.mc-hero-copy { max-width:690px; position:relative; z-index:1; }
+.mc-eyebrow { margin:0 0 10px; color:#42e7ff; font-size:11px; letter-spacing:2px; font-weight:850; text-transform:uppercase; }
+.mc-hero h1 { margin:0 0 12px; color:#fff; font-size:clamp(24px,3vw,36px); line-height:1.14; font-weight:850; letter-spacing:-.7px; }
 .mc-hero h1 span { color:#40e5ff; }
-.mc-hero p.mc-subtitle { max-width:660px; margin:0 0 26px; color:#e0edff; font-size:16px; line-height:1.8; }
+.mc-hero p.mc-subtitle { max-width:660px; margin:0 0 16px; color:#e0edff; font-size:14px; line-height:1.65; }
 .mc-tags { display:flex; flex-wrap:wrap; gap:10px; }
-.mc-tags span { border:1px solid rgba(82,218,255,.4); border-radius:100px; background:rgba(2,31,76,.55); padding:10px 15px; font-size:12px; font-weight:700; color:#e9faff; }
-.mc-hero-art { position:absolute; right:3%; top:50%; transform:translateY(-50%); font-size:150px; line-height:1; opacity:.28; filter:drop-shadow(0 0 28px #21c9ff); pointer-events:none; }
+.mc-tags span { border:1px solid rgba(82,218,255,.4); border-radius:100px; background:rgba(2,31,76,.55); padding:7px 11px; font-size:11px; font-weight:700; color:#e9faff; }
+.mc-hero-art { position:absolute; right:3%; top:50%; transform:translateY(-50%); font-size:105px; line-height:1; opacity:.28; filter:drop-shadow(0 0 28px #21c9ff); pointer-events:none; }
 .mc-section-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0 0 20px; }
 .mc-section-head h2 { margin:0; font-size:25px; font-weight:850; color:#0b2454; letter-spacing:-.5px; }
 .mc-section-head a { color:#0865c7; font-weight:750; font-size:13px; }
-.mc-highlight { margin:28px 0 35px; overflow:hidden; border-radius:19px; background:white; box-shadow:0 10px 28px rgba(23,61,121,.09); border:1px solid #e3ebf9; }
-.mc-highlight-top { display:flex; align-items:center; justify-content:space-between; padding:15px 22px; background:linear-gradient(110deg,#0b2355,#1451ae 65%,#1376d2); color:white; }
-.mc-highlight-top h2 { margin:0; font-size:21px; font-weight:850; color:white; }
+.mc-highlight { margin:20px 0 28px; overflow:hidden; border-radius:13px; background:white; box-shadow:0 10px 28px rgba(23,61,121,.09); border:1px solid #e3ebf9; }
+.mc-highlight-top { display:flex; align-items:center; justify-content:space-between; padding:11px 17px; background:linear-gradient(110deg,#0b2355,#1451ae 65%,#1376d2); color:white; }
+.mc-highlight-top h2 { margin:0; font-size:18px; font-weight:850; color:white; }
 .mc-highlight-top small { color:#cbeaff; font-weight:650; }
-.mc-feature { display:grid; grid-template-columns:190px minmax(0,1fr); gap:24px; align-items:center; padding:22px; }
+/* Highlight berjalan otomatis seperti homepage awal */
+.mc-highlight-track { overflow:hidden; padding:11px 0; min-height:76px; display:flex; align-items:center; }
+.mc-highlight-marquee { display:flex; width:max-content; align-items:center; animation:mc-marquee 42s linear infinite; }
+.mc-highlight-group { display:flex; flex:none; align-items:center; }
+.mc-highlight-item { display:inline-flex; align-items:center; gap:12px; flex:none; padding:0 22px; font-size:14px; font-weight:750; line-height:1.4; color:#193960; white-space:nowrap; }
+.mc-highlight-item:hover { color:#0875d5; }
+.mc-highlight-item img { width:72px; height:48px; border-radius:7px; object-fit:cover; display:block; flex:none; }
+.mc-highlight-separator { color:#12b9e9; font-size:21px; }
+.mc-highlight:hover .mc-highlight-marquee,.mc-highlight:focus-within .mc-highlight-marquee { animation-play-state:paused; }
+@keyframes mc-marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
 .mc-feature-img { display:block; overflow:hidden; border-radius:13px; aspect-ratio:16/10; background:linear-gradient(135deg,#0b2355,#1889d5); }
 .mc-feature-img img { width:100%; height:100%; object-fit:cover; display:block; }
 .mc-feature h3 { margin:0 0 11px; font-size:clamp(18px,2vw,24px); line-height:1.35; font-weight:800; }
@@ -63,8 +72,8 @@ body:has(.mc-home) .page-content { padding-top:24px; }
 .mc-widget .mc-button { display:block; margin-top:15px; }
 .mc-all-link { text-align:center; margin:28px 0 42px; }
 @media(max-width:900px) { .mc-content { grid-template-columns:1fr; } .mc-sidebar { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; } .mc-widget { margin-bottom:0; } }
-@media(max-width:640px) { body:has(.mc-home) .page-content > .wrapper { padding-left:14px; padding-right:14px; } .mc-hero { min-height:340px; padding:34px 25px; border-radius:16px; } .mc-hero-art { font-size:110px; right:-20px; opacity:.13; } .mc-eyebrow { font-size:10px; letter-spacing:1.6px; } .mc-hero h1 { letter-spacing:-.5px; } .mc-hero p.mc-subtitle { font-size:14px; } .mc-tags span { font-size:11px; padding:8px 10px; } .mc-feature { grid-template-columns:1fr; gap:14px; padding:16px; } .mc-feature-img { aspect-ratio:16/9; } .mc-article-grid,.mc-sidebar { grid-template-columns:1fr; } .mc-section-head h2 { font-size:21px; } }
-@media(prefers-reduced-motion:reduce) { .mc-card,.mc-card-image img { transition:none; } }
+@media(max-width:640px) { body:has(.mc-home) .page-content > .wrapper { padding-left:14px; padding-right:14px; } .mc-hero { min-height:230px; padding:25px 20px; border-radius:16px; } .mc-hero-art { font-size:80px; right:-20px; opacity:.13; } .mc-eyebrow { font-size:10px; letter-spacing:1.6px; } .mc-hero h1 { letter-spacing:-.5px; } .mc-hero p.mc-subtitle { font-size:14px; } .mc-tags span { font-size:11px; padding:8px 10px; } .mc-highlight-item { padding:0 15px; font-size:12px; } .mc-highlight-item img { width:62px; height:42px; } .mc-article-grid,.mc-sidebar { grid-template-columns:1fr; } .mc-section-head h2 { font-size:21px; } }
+@media(prefers-reduced-motion:reduce) { .mc-card,.mc-card-image img { transition:none; } .mc-highlight-marquee { animation:none; width:auto; } .mc-highlight-group { flex-wrap:wrap; } .mc-highlight-group[aria-hidden="true"] { display:none; } .mc-highlight-item { white-space:normal; padding:7px 14px; } }
 </style>
 
 {% assign mc_posts = site.posts | sort: 'date' | reverse %}
@@ -75,28 +84,32 @@ body:has(.mc-home) .page-content { padding-top:24px; }
   <section class="mc-hero" aria-label="Selamat datang di Media Core">
     <div class="mc-hero-copy">
       <p class="mc-eyebrow">Wawasan Digital · Budaya · Teknologi</p>
-      <h1>Jendela Informasi untuk <span>Dunia yang Terus Bergerak</span></h1>
-      <p class="mc-subtitle">Selamat datang di Media Core. Jelajahi artikel tentang teknologi, budaya, tren kreatif, dan hiburan digital dalam satu ruang baca.</p>
+      <h1>Eksplorasi <span>Teknologi &amp; Hiburan Digital</span> Masa Kini</h1>
+      <p class="mc-subtitle">Temukan perkembangan teknologi, tren game, budaya digital, dan cerita kreatif yang dekat dengan kehidupan generasi modern.</p>
       <div class="mc-tags"><span>✦ Teknologi Digital</span><span>✦ Budaya &amp; Tren Kreatif</span><span>✦ Hiburan Digital</span></div>
     </div>
     <div class="mc-hero-art" aria-hidden="true">✦</div>
   </section>
 
   {% if mc_posts.size > 0 %}
-  {% assign featured = mc_posts.first %}
-  {% assign featured_image = featured.image %}
-  {% unless featured_image %}{% if mc_banner_count > 0 %}{% assign fallback_index = featured.slug.size | modulo: mc_banner_count %}{% assign featured_image = mc_banners[fallback_index].path %}{% endif %}{% endunless %}
-  <section class="mc-highlight" aria-label="Highlight artikel">
+  <section class="mc-highlight" aria-label="Highlight artikel terbaru">
     <div class="mc-highlight-top"><h2>✦ HIGHLIGHT</h2><small>Topik Pilihan</small></div>
-    <article class="mc-feature">
-      {% if featured_image %}<a class="mc-feature-img" href="{{ featured.url | relative_url }}"><img src="{{ featured_image | relative_url }}" alt="{{ featured.title | escape }}" width="640" height="400" fetchpriority="high"></a>{% endif %}
-      <div>
-        <h3><a href="{{ featured.url | relative_url }}">{{ featured.title | escape }}</a></h3>
-        <p>{% if featured.description %}{{ featured.description | escape }}{% else %}{{ featured.excerpt | strip_html | truncatewords: 26 }}{% endif %}</p>
-        <div class="mc-feature-meta">{{ featured.date | date: '%d-%m-%Y' }} · MEDIA CORE</div>
-        <p style="margin:14px 0 0"><a class="mc-button" href="{{ featured.url | relative_url }}">Baca Artikel →</a></p>
+    <div class="mc-highlight-track">
+      <div class="mc-highlight-marquee">
+        {% for copy in (1..2) %}
+          <div class="mc-highlight-group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
+            {% for post in mc_posts limit:5 %}
+              {% assign highlight_image = post.image %}
+              {% unless highlight_image %}{% if mc_banner_count > 0 %}{% assign highlight_index = post.slug.size | modulo: mc_banner_count %}{% assign highlight_image = mc_banners[highlight_index].path %}{% endif %}{% endunless %}
+              <a class="mc-highlight-item" href="{{ post.url | relative_url }}" {% if copy == 2 %}tabindex="-1"{% endif %}>
+                {% if highlight_image %}<img src="{{ highlight_image | relative_url }}" alt="" width="72" height="48" loading="lazy">{% endif %}
+                <span>{{ post.title | escape }}</span><span class="mc-highlight-separator" aria-hidden="true">✦</span>
+              </a>
+            {% endfor %}
+          </div>
+        {% endfor %}
       </div>
-    </article>
+    </div>
   </section>
   {% endif %}
 
