@@ -19,7 +19,7 @@ body:has(.mc-home) .page-content { padding-top:18px; }
   background-color:#061734;
   background-image:
     linear-gradient(90deg,rgba(3,13,39,.96) 0%,rgba(5,20,54,.91) 30%,rgba(5,20,54,.69) 48%,rgba(5,20,54,.12) 74%,rgba(5,20,54,0) 100%),
-    url("{{ '/assets/images/hero-media-core.webp' | relative_url }}");
+    url("{{ '/assets/images/hero-media-core.jpg' | relative_url }}");
   background-position:center,center;
   background-size:cover,cover;
   background-repeat:no-repeat;
@@ -86,7 +86,7 @@ body:has(.mc-home) .page-content { padding-top:18px; }
 .mc-widget .mc-button { display:block; margin-top:15px; }
 .mc-all-link { text-align:center; margin:28px 0 42px; }
 @media(max-width:900px) { .mc-content { grid-template-columns:1fr; } .mc-sidebar { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; } .mc-widget { margin-bottom:0; } }
-@media(max-width:640px) { body:has(.mc-home) .page-content > .wrapper { padding-left:14px; padding-right:14px; } .mc-hero { min-height:320px; padding:24px 20px; border-radius:16px; background-image:linear-gradient(90deg,rgba(3,13,39,.97) 0%,rgba(3,13,39,.88) 52%,rgba(3,13,39,.45) 100%),url("{{ '/assets/images/hero-media-core.webp' | relative_url }}"); background-position:center,65% center; } .mc-hero-copy { width:100%; max-width:440px; } .mc-eyebrow { font-size:10px; letter-spacing:1.6px; } .mc-hero h1 { letter-spacing:-.5px; } .mc-hero p.mc-subtitle { font-size:14px; } .mc-tags span { font-size:11px; padding:8px 10px; } .mc-highlight-item { padding:0 15px; font-size:12px; } .mc-highlight-item img { width:62px; height:42px; } .mc-article-grid,.mc-sidebar { grid-template-columns:1fr; } .mc-section-head h2 { font-size:21px; } }
+@media(max-width:640px) { body:has(.mc-home) .page-content > .wrapper { padding-left:14px; padding-right:14px; } .mc-hero { min-height:320px; padding:24px 20px; border-radius:16px; background-image:linear-gradient(90deg,rgba(3,13,39,.97) 0%,rgba(3,13,39,.88) 52%,rgba(3,13,39,.45) 100%),url("{{ '/assets/images/hero-media-core.jpg' | relative_url }}"); background-position:center,65% center; } .mc-hero-copy { width:100%; max-width:440px; } .mc-eyebrow { font-size:10px; letter-spacing:1.6px; } .mc-hero h1 { letter-spacing:-.5px; } .mc-hero p.mc-subtitle { font-size:14px; } .mc-tags span { font-size:11px; padding:8px 10px; } .mc-highlight-item { padding:0 15px; font-size:12px; } .mc-highlight-item img { width:62px; height:42px; } .mc-article-grid,.mc-sidebar { grid-template-columns:1fr; } .mc-section-head h2 { font-size:21px; } }
 @media(prefers-reduced-motion:reduce) { .mc-card,.mc-card-image img { transition:none; } .mc-highlight-marquee { animation:none; width:auto; } .mc-highlight-group { flex-wrap:wrap; } .mc-highlight-group[aria-hidden="true"] { display:none; } .mc-highlight-item { white-space:normal; padding:7px 14px; } }
 </style>
 
