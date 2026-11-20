@@ -1,23 +1,24 @@
-
 <style>
-/* =========================================
-   MEDIA CORE - HEADER PREMIUM FINAL
-   ========================================= */
+/* ==========================================
+   MEDIA CORE - PREMIUM HEADER FINAL
+   ========================================== */
 
 .site-header {
-  background: #f4f7ff;
-  border-top: 0;
-  border-bottom: 1px solid #dce5f3;
+  background: #f4f7ff !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid #dce5f3 !important;
   box-shadow: 0 2px 12px rgba(15, 35, 75, 0.04);
 }
 
-/* Kontainer header sejajar dengan homepage */
-.site-header .wrapper {
+/* Kontainer khusus MEDIA CORE */
+.site-header .mc-header-container {
   width: calc(100% - 48px) !important;
   max-width: 1320px !important;
-  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   padding: 0 !important;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,7 +27,7 @@
 }
 
 /* Logo MEDIA CORE */
-.site-header .site-title {
+.site-header .mc-header-logo {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
@@ -34,9 +35,10 @@
   margin: 0 !important;
   padding: 0 !important;
   line-height: 1;
+  text-decoration: none;
 }
 
-.site-header .site-title img {
+.site-header .mc-header-logo img {
   display: block;
   width: 230px;
   max-width: 100%;
@@ -44,7 +46,7 @@
 }
 
 /* Navigasi desktop */
-.site-header .site-nav {
+.site-header .mc-header-nav {
   position: static;
   float: none !important;
   margin: 0 0 0 auto !important;
@@ -54,18 +56,18 @@
   line-height: normal;
 }
 
-.site-header .site-nav .trigger {
+.site-header .mc-header-nav .trigger {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 30px;
 }
 
-.site-header .site-nav .page-link {
+.site-header .mc-header-nav .page-link {
   display: inline-block;
   margin: 0 !important;
   padding: 8px 0;
-  color: #172b4d;
+  color: #172b4d !important;
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
@@ -73,51 +75,72 @@
   transition: color .2s ease;
 }
 
-.site-header .site-nav .page-link:hover {
-  color: #087bdf;
+.site-header .mc-header-nav .page-link:hover {
+  color: #087bdf !important;
 }
 
-/* =========================================
-   RESPONSIVE TABLET DAN MOBILE
-   ========================================= */
+/* Sembunyikan checkbox dan ikon menu di desktop */
+.site-header .mc-nav-trigger {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.site-header .mc-menu-toggle {
+  display: none;
+}
+
+/* ==========================================
+   RESPONSIVE MOBILE
+   ========================================== */
 
 @media screen and (max-width: 600px) {
 
-  .site-header .wrapper {
+  .site-header .mc-header-container {
     width: calc(100% - 32px) !important;
     min-height: 68px;
     gap: 12px;
   }
 
-  .site-header .site-title img {
+  .site-header .mc-header-logo img {
     width: 185px;
   }
 
-  .site-header .site-nav {
+  .site-header .mc-header-nav {
     position: relative;
     margin-left: auto !important;
-    border-radius: 8px;
   }
 
-  .site-header .site-nav label[for="nav-trigger"] {
-    display: block;
+  .site-header .mc-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #dce5f3;
+    border-radius: 9px;
+    background: #ffffff;
     cursor: pointer;
   }
 
-  .site-header .site-nav .trigger {
+  .site-header .mc-menu-toggle svg {
+    display: block;
+  }
+
+  .site-header .mc-header-nav .trigger {
     display: none;
   }
 
-  .site-header .site-nav input:checked ~ .trigger {
+  .site-header .mc-nav-trigger:checked ~ .trigger {
     display: flex;
     position: absolute;
     right: 0;
-    top: 100%;
+    top: calc(100% + 8px);
     z-index: 1000;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    min-width: 180px;
+    min-width: 185px;
     padding: 8px 14px;
     border: 1px solid #dce5f3;
     border-radius: 10px;
@@ -125,7 +148,8 @@
     box-shadow: 0 8px 25px rgba(15, 35, 75, 0.12);
   }
 
-  .site-header .site-nav .page-link {
+  .site-header .mc-header-nav .page-link {
+    display: block;
     padding: 12px 6px;
   }
 
@@ -133,10 +157,11 @@
 </style>
 
 <header class="site-header" role="banner">
-  <div class="wrapper">
+
+  <div class="mc-header-container">
 
     <!-- LOGO MEDIA CORE -->
-    <a class="site-title"
+    <a class="mc-header-logo"
        rel="author"
        href="{{ '/' | relative_url }}"
        aria-label="Media Core - Beranda">
@@ -145,7 +170,7 @@
         src="{{ '/assets/images/logo-media-core.png' | relative_url }}"
         alt="Media Core"
         width="230"
-        style="height:auto;">
+        height="auto">
 
     </a>
 
@@ -154,35 +179,49 @@
     {% assign page_paths = site.header_pages | default: default_paths %}
 
     {% if page_paths %}
-      <nav class="site-nav" aria-label="Navigasi utama">
+    <nav class="mc-header-nav" aria-label="Navigasi utama">
 
-        <input type="checkbox"
-               id="nav-trigger"
-               class="nav-trigger">
+      <input
+        type="checkbox"
+        id="mc-nav-trigger"
+        class="mc-nav-trigger">
 
-        <label for="nav-trigger" aria-label="Buka menu navigasi">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18" height="15">
-              <path fill="#172b4d"
-                    d="M18 1.484c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 1.484C0 .665.665 0 1.484 0h15.032C17.335 0 18 .665 18 1.484zm0 6.016c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 7.5c0-.82.665-1.484 1.484-1.484h15.032C17.335 6.016 18 6.68 18 7.5zm0 6.016c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 13.516c0-.82.665 1.484-1.484 1.484h15.032c.82 0 1.484.665 1.484 1.484z"/>
-            </svg>
-          </span>
-        </label>
+      <label
+        for="mc-nav-trigger"
+        class="mc-menu-toggle"
+        aria-label="Buka menu navigasi">
 
-        <div class="trigger">
-          {% for path in page_paths %}
-            {% assign my_page = site.pages | where: "path", path | first %}
-            {% if my_page.title %}
-              <a class="page-link"
-                 href="{{ my_page.url | relative_url }}">
-                {{ my_page.title | escape }}
-              </a>
-            {% endif %}
-          {% endfor %}
-        </div>
+        <svg viewBox="0 0 24 24"
+             width="22"
+             height="22"
+             fill="none"
+             stroke="#172b4d"
+             stroke-width="2"
+             stroke-linecap="round">
 
-      </nav>
+          <path d="M4 6h16"/>
+          <path d="M4 12h16"/>
+          <path d="M4 18h16"/>
+
+        </svg>
+
+      </label>
+
+      <div class="trigger">
+        {% for path in page_paths %}
+          {% assign my_page = site.pages | where: "path", path | first %}
+          {% if my_page.title %}
+            <a class="page-link"
+               href="{{ my_page.url | relative_url }}">
+              {{ my_page.title | escape }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+    </nav>
     {% endif %}
 
   </div>
+
 </header>
