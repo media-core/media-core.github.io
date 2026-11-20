@@ -11,17 +11,31 @@ body:has(.mc-home) .page-content { padding-top:18px; }
 .mc-home,.mc-home * { box-sizing:border-box; }
 .mc-home { color:#10254b; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; }
 .mc-home a { text-decoration:none; }
-.mc-hero { position:relative; isolation:isolate; overflow:hidden; min-height:235px; display:flex; align-items:center; padding:28px 4%; border-radius:16px; background:radial-gradient(circle at 83% 30%,#2451a8 0%,transparent 35%),linear-gradient(120deg,#061734 0%,#102a62 57%,#061734 100%); color:white; box-shadow:0 18px 38px rgba(8,34,83,.18); }
-.mc-hero:before { content:""; position:absolute; z-index:-1; right:-80px; top:-180px; width:530px; height:530px; border:2px solid rgba(40,225,255,.25); border-radius:50%; box-shadow:0 0 0 48px rgba(44,121,255,.06),0 0 0 105px rgba(44,121,255,.045); }
-.mc-hero:after { content:""; position:absolute; z-index:-1; right:10%; bottom:-170px; width:430px; height:360px; border-radius:50%; background:#00d9ff; filter:blur(110px); opacity:.13; }
-.mc-hero-copy { max-width:690px; position:relative; z-index:1; }
+/* Hero gambar khusus beranda, teks tetap HTML untuk SEO */
+.mc-hero {
+  position:relative; isolation:isolate; overflow:hidden;
+  min-height:280px; display:flex; align-items:center;
+  padding:32px 4%; border-radius:16px;
+  background-color:#061734;
+  background-image:
+    linear-gradient(90deg,rgba(3,13,39,.96) 0%,rgba(5,20,54,.91) 30%,rgba(5,20,54,.69) 48%,rgba(5,20,54,.12) 74%,rgba(5,20,54,0) 100%),
+    url("{{ '/assets/images/hero-media-core.webp' | relative_url }}");
+  background-position:center,center;
+  background-size:cover,cover;
+  background-repeat:no-repeat;
+  color:#fff;
+  box-shadow:0 18px 38px rgba(8,34,83,.18);
+}
+/* Hilangkan ornamen lingkaran lama agar tidak menutupi ilustrasi */
+.mc-hero::before,.mc-hero::after { content:none !important; display:none !important; }
+.mc-hero-copy { max-width:590px; width:57%; position:relative; z-index:1; }
 .mc-eyebrow { margin:0 0 10px; color:#42e7ff; font-size:11px; letter-spacing:2px; font-weight:850; text-transform:uppercase; }
 .mc-hero h1 { margin:0 0 12px; color:#fff; font-size:clamp(24px,3vw,36px); line-height:1.14; font-weight:850; letter-spacing:-.7px; }
 .mc-hero h1 span { color:#40e5ff; }
 .mc-hero p.mc-subtitle { max-width:660px; margin:0 0 16px; color:#e0edff; font-size:14px; line-height:1.65; }
 .mc-tags { display:flex; flex-wrap:wrap; gap:10px; }
 .mc-tags span { border:1px solid rgba(82,218,255,.4); border-radius:100px; background:rgba(2,31,76,.55); padding:7px 11px; font-size:11px; font-weight:700; color:#e9faff; }
-.mc-hero-art { position:absolute; right:3%; top:50%; transform:translateY(-50%); font-size:105px; line-height:1; opacity:.28; filter:drop-shadow(0 0 28px #21c9ff); pointer-events:none; }
+
 .mc-section-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0 0 20px; }
 .mc-section-head h2 { margin:0; font-size:25px; font-weight:850; color:#0b2454; letter-spacing:-.5px; }
 .mc-section-head a { color:#0865c7; font-weight:750; font-size:13px; }
@@ -72,7 +86,7 @@ body:has(.mc-home) .page-content { padding-top:18px; }
 .mc-widget .mc-button { display:block; margin-top:15px; }
 .mc-all-link { text-align:center; margin:28px 0 42px; }
 @media(max-width:900px) { .mc-content { grid-template-columns:1fr; } .mc-sidebar { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; } .mc-widget { margin-bottom:0; } }
-@media(max-width:640px) { body:has(.mc-home) .page-content > .wrapper { padding-left:14px; padding-right:14px; } .mc-hero { min-height:230px; padding:25px 20px; border-radius:16px; } .mc-hero-art { font-size:80px; right:-20px; opacity:.13; } .mc-eyebrow { font-size:10px; letter-spacing:1.6px; } .mc-hero h1 { letter-spacing:-.5px; } .mc-hero p.mc-subtitle { font-size:14px; } .mc-tags span { font-size:11px; padding:8px 10px; } .mc-highlight-item { padding:0 15px; font-size:12px; } .mc-highlight-item img { width:62px; height:42px; } .mc-article-grid,.mc-sidebar { grid-template-columns:1fr; } .mc-section-head h2 { font-size:21px; } }
+@media(max-width:640px) { body:has(.mc-home) .page-content > .wrapper { padding-left:14px; padding-right:14px; } .mc-hero { min-height:320px; padding:24px 20px; border-radius:16px; background-image:linear-gradient(90deg,rgba(3,13,39,.97) 0%,rgba(3,13,39,.88) 52%,rgba(3,13,39,.45) 100%),url("{{ '/assets/images/hero-media-core.webp' | relative_url }}"); background-position:center,65% center; } .mc-hero-copy { width:100%; max-width:440px; } .mc-eyebrow { font-size:10px; letter-spacing:1.6px; } .mc-hero h1 { letter-spacing:-.5px; } .mc-hero p.mc-subtitle { font-size:14px; } .mc-tags span { font-size:11px; padding:8px 10px; } .mc-highlight-item { padding:0 15px; font-size:12px; } .mc-highlight-item img { width:62px; height:42px; } .mc-article-grid,.mc-sidebar { grid-template-columns:1fr; } .mc-section-head h2 { font-size:21px; } }
 @media(prefers-reduced-motion:reduce) { .mc-card,.mc-card-image img { transition:none; } .mc-highlight-marquee { animation:none; width:auto; } .mc-highlight-group { flex-wrap:wrap; } .mc-highlight-group[aria-hidden="true"] { display:none; } .mc-highlight-item { white-space:normal; padding:7px 14px; } }
 </style>
 
@@ -88,7 +102,6 @@ body:has(.mc-home) .page-content { padding-top:18px; }
       <p class="mc-subtitle">Temukan perkembangan teknologi, tren game, budaya digital, dan cerita kreatif yang dekat dengan kehidupan generasi modern.</p>
       <div class="mc-tags"><span>✦ Teknologi Digital</span><span>✦ Budaya &amp; Tren Kreatif</span><span>✦ Hiburan Digital</span></div>
     </div>
-    <div class="mc-hero-art" aria-hidden="true">✦</div>
   </section>
 
   {% if mc_posts.size > 0 %}
