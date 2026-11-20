@@ -1,6 +1,7 @@
+
 <style>
 /* =========================================
-   MEDIA CORE - HEADER PREMIUM RESPONSIVE
+   MEDIA CORE - HEADER PREMIUM FINAL
    ========================================= */
 
 .site-header {
@@ -10,10 +11,10 @@
   box-shadow: 0 2px 12px rgba(15, 35, 75, 0.04);
 }
 
-/* Samakan lebar header dengan hero homepage */
+/* Kontainer header sejajar dengan homepage */
 .site-header .wrapper {
-  width: calc(100% - 86px) !important;
-  max-width: 1440px !important;
+  width: calc(100% - 48px) !important;
+  max-width: 1320px !important;
   margin: 0 auto !important;
   padding: 0 !important;
   box-sizing: border-box;
@@ -24,7 +25,7 @@
   min-height: 78px;
 }
 
-/* Logo di sisi kiri */
+/* Logo MEDIA CORE */
 .site-header .site-title {
   display: inline-flex;
   align-items: center;
@@ -42,7 +43,7 @@
   height: auto;
 }
 
-/* Menu navigasi di sisi kanan */
+/* Navigasi desktop */
 .site-header .site-nav {
   position: static;
   float: none !important;
@@ -76,8 +77,12 @@
   color: #087bdf;
 }
 
-/* Tampilan tablet dan HP */
+/* =========================================
+   RESPONSIVE TABLET DAN MOBILE
+   ========================================= */
+
 @media screen and (max-width: 600px) {
+
   .site-header .wrapper {
     width: calc(100% - 32px) !important;
     min-height: 68px;
@@ -88,7 +93,6 @@
     width: 185px;
   }
 
-  /* Kembalikan menu hamburger bawaan Minima */
   .site-header .site-nav {
     position: relative;
     margin-left: auto !important;
@@ -96,6 +100,7 @@
   }
 
   .site-header .site-nav label[for="nav-trigger"] {
+    display: block;
     cursor: pointer;
   }
 
@@ -116,13 +121,14 @@
     padding: 8px 14px;
     border: 1px solid #dce5f3;
     border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 8px 25px rgba(15,35,75,.12);
+    background: #ffffff;
+    box-shadow: 0 8px 25px rgba(15, 35, 75, 0.12);
   }
 
   .site-header .site-nav .page-link {
     padding: 12px 6px;
   }
+
 }
 </style>
 
@@ -139,11 +145,11 @@
         src="{{ '/assets/images/logo-media-core.png' | relative_url }}"
         alt="Media Core"
         width="230"
-        height="auto">
+        style="height:auto;">
 
     </a>
 
-    <!-- NAVIGASI -->
+    <!-- NAVIGASI MEDIA CORE -->
     {% assign default_paths = site.pages | map: "path" %}
     {% assign page_paths = site.header_pages | default: default_paths %}
 
@@ -154,11 +160,11 @@
                id="nav-trigger"
                class="nav-trigger">
 
-        <label for="nav-trigger">
+        <label for="nav-trigger" aria-label="Buka menu navigasi">
           <span class="menu-icon">
             <svg viewBox="0 0 18 15" width="18" height="15">
-              <path fill="#424242"
-                    d="M18 1.484c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 1.484C0 .665.665 0 1.484 0h15.032C17.335 0 18 .665 18 1.484zm0 6.016c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 7.5c0-.82.665-1.484 1.484-1.484h15.032C17.335 6.016 18 6.68 18 7.5zm0 6.016c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 13.516c0-.82-.665 1.484-1.484 1.484h15.032c.82 0 1.484.665 1.484 1.484z"/>
+              <path fill="#172b4d"
+                    d="M18 1.484c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 1.484C0 .665.665 0 1.484 0h15.032C17.335 0 18 .665 18 1.484zm0 6.016c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 7.5c0-.82.665-1.484 1.484-1.484h15.032C17.335 6.016 18 6.68 18 7.5zm0 6.016c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 13.516c0-.82.665 1.484-1.484 1.484h15.032c.82 0 1.484.665 1.484 1.484z"/>
             </svg>
           </span>
         </label>
