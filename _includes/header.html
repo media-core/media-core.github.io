@@ -16,13 +16,13 @@
     #06122f 100%
   ) !important;
   border: 0 !important;
-  border-bottom: 1px solid rgba(58, 171, 255, .35) !important;
+  border-bottom: 1px solid rgba(58, 171, 255, .25) !important;
   box-shadow: 0 4px 20px rgba(0, 28, 91, .12);
   overflow: visible;
   isolation: isolate;
 }
 
-/* Efek cahaya lembut */
+/* Cahaya biru lembut pada background */
 .mc-neon-header::before {
   content: "";
   position: absolute;
@@ -32,56 +32,74 @@
   background:
     radial-gradient(
       ellipse at 24% 0%,
-      rgba(0, 169, 255, .20),
+      rgba(0, 169, 255, .15),
       transparent 45%
     ),
     radial-gradient(
       ellipse at 78% 100%,
-      rgba(27, 92, 235, .14),
+      rgba(27, 92, 235, .12),
       transparent 48%
     );
 }
 
-/* Garis neon melengkung */
+/* ==========================================
+   GARIS NEON CYAN - VERSI ELEGAN
+   Lebih pendek dan tidak mengganggu logo
+   ========================================== */
+
 .mc-neon-header::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 43%;
-  height: 64px;
-  border-bottom: 2px solid #39cfff;
+  width: 28%;
+  height: 30px;
+
+  border-bottom: 1.5px solid rgba(66, 207, 255, .75);
   border-radius: 0 0 100% 0;
+
   box-shadow:
-    0 3px 7px rgba(0, 209, 255, .8),
-    0 6px 18px rgba(0, 123, 255, .45);
+    0 2px 5px rgba(0, 195, 255, .35),
+    0 4px 12px rgba(0, 123, 255, .15);
+
   pointer-events: none;
   z-index: 0;
 }
 
-/* Kontainer header - mengikuti hero */
+/* ==========================================
+   KONTAINER HEADER
+   ========================================== */
+
 .mc-neon-header .mc-header-container {
   position: relative;
   z-index: 2;
+
   width: calc(100% - 48px) !important;
   max-width: 1400px !important;
   min-height: 86px;
+
   margin: 0 auto !important;
   padding: 0 !important;
   box-sizing: border-box;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
 
-/* Logo asli MEDIA CORE */
+/* ==========================================
+   LOGO ASLI MEDIA CORE
+   ========================================== */
+
 .mc-neon-header .mc-header-logo {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
+
   margin: 0 !important;
   padding: 0 !important;
+
   line-height: 1;
   text-decoration: none;
 }
@@ -94,13 +112,19 @@
   object-fit: contain;
 }
 
-/* Navigasi */
+/* ==========================================
+   NAVIGASI DESKTOP
+   ========================================== */
+
 .mc-neon-header .mc-header-nav {
   position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
   margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .mc-neon-header .mc-nav-links {
@@ -109,70 +133,91 @@
   gap: 12px;
 }
 
+/* Tombol navigasi */
 .mc-neon-header .mc-nav-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+
   min-height: 39px;
   padding: 0 17px;
+
   border: 1px solid rgba(106, 164, 255, .10);
   border-radius: 999px;
+
   background: rgba(2, 12, 40, .76);
   color: #e8f5ff !important;
+
   font-size: 14px;
   font-weight: 600;
   line-height: 1.3;
   white-space: nowrap;
   text-decoration: none !important;
-  transition: .2s ease;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
 }
 
+/* Hover tombol */
 .mc-neon-header .mc-nav-link:hover {
-  background: rgba(34, 106, 216, .6);
+  background: rgba(34, 106, 216, .60);
   border-color: rgba(75, 200, 255, .55);
-  color: #fff !important;
+  color: #ffffff !important;
   transform: translateY(-1px);
 }
 
+/* Tombol aktif */
 .mc-neon-header .mc-nav-link.is-active {
   background: linear-gradient(
     110deg,
     #2265e8,
     #37baff
   );
-  color: #fff !important;
+
+  color: #ffffff !important;
   border-color: rgba(130, 222, 255, .55);
+
   box-shadow:
-    0 0 12px rgba(45, 153, 255, .55),
-    0 0 22px rgba(35, 132, 255, .22);
+    0 0 10px rgba(45, 153, 255, .40),
+    0 0 18px rgba(35, 132, 255, .15);
 }
 
+/* Ikon tombol */
 .mc-neon-header .mc-nav-link svg {
   width: 17px;
   height: 17px;
   flex-shrink: 0;
 }
 
-/* Tombol pencarian */
+/* ==========================================
+   TOMBOL SEARCH
+   ========================================== */
+
 .mc-neon-header .mc-search-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   width: 40px;
   height: 40px;
   padding: 0;
+
   border: 1px solid rgba(74, 154, 255, .65);
   border-radius: 50%;
+
   background: rgba(5, 20, 58, .65);
-  color: #fff;
+  color: #ffffff;
+
   cursor: pointer;
   transition: .2s ease;
 }
 
 .mc-neon-header .mc-search-toggle:hover {
   background: #176ce0;
-  box-shadow: 0 0 14px rgba(34, 172, 255, .5);
+  box-shadow: 0 0 12px rgba(34, 172, 255, .35);
 }
 
 .mc-neon-header .mc-search-toggle svg {
@@ -180,18 +225,25 @@
   height: 20px;
 }
 
-/* Panel pencarian */
+/* ==========================================
+   PANEL PENCARIAN
+   ========================================== */
+
 .mc-neon-header .mc-search-panel {
   position: absolute;
   top: calc(100% + 15px);
   right: 0;
+
   width: min(370px, calc(100vw - 32px));
   padding: 18px;
   box-sizing: border-box;
+
   border: 1px solid rgba(65, 173, 255, .35);
   border-radius: 15px;
+
   background: #081a3e;
   box-shadow: 0 16px 40px rgba(0, 10, 35, .28);
+
   z-index: 9999;
 }
 
@@ -202,7 +254,8 @@
 .mc-neon-header .mc-search-panel label {
   display: block;
   margin-bottom: 10px;
-  color: #fff;
+
+  color: #ffffff;
   font-size: 14px;
   font-weight: 700;
 }
@@ -212,10 +265,12 @@
   height: 42px;
   padding: 0 12px;
   box-sizing: border-box;
+
   border: 1px solid #3964a4;
   border-radius: 8px;
+
   outline: none;
-  background: #fff;
+  background: #ffffff;
   color: #172b4d;
   font-size: 14px;
 }
@@ -225,6 +280,7 @@
   box-shadow: 0 0 0 3px rgba(53, 213, 255, .16);
 }
 
+/* Hasil pencarian */
 .mc-neon-header .mc-search-results {
   max-height: 280px;
   overflow-y: auto;
@@ -234,7 +290,9 @@
 .mc-neon-header .mc-search-result {
   display: block;
   padding: 10px 6px;
+
   border-bottom: 1px solid rgba(255,255,255,.1);
+
   color: #eaf7ff !important;
   font-size: 13px;
   line-height: 1.5;
@@ -251,16 +309,17 @@
   font-size: 13px;
 }
 
-/* Hamburger */
+/* Tombol hamburger disembunyikan di desktop */
 .mc-neon-header .mc-mobile-toggle {
   display: none;
 }
 
 /* ==========================================
-   RESPONSIVE
+   RESPONSIVE MOBILE
    ========================================== */
 
 @media (max-width: 700px) {
+
   .site-header.mc-neon-header {
     min-height: 72px;
   }
@@ -275,41 +334,53 @@
     width: 175px;
   }
 
+  /* Lengkungan lebih pendek di HP */
   .mc-neon-header::after {
-    width: 58%;
-    height: 42px;
+    width: 35%;
+    height: 18px;
+    opacity: .65;
   }
 
   .mc-neon-header .mc-header-nav {
     gap: 8px;
   }
 
+  /* Tombol hamburger */
   .mc-neon-header .mc-mobile-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     width: 39px;
     height: 39px;
     padding: 0;
+
     border: 1px solid rgba(74,154,255,.65);
     border-radius: 50%;
+
     background: rgba(5,20,58,.65);
-    color: #fff;
+    color: #ffffff;
     cursor: pointer;
   }
 
+  /* Menu dropdown mobile */
   .mc-neon-header .mc-nav-links {
     display: none;
     position: absolute;
     top: calc(100% + 15px);
     right: 0;
+
     min-width: 190px;
     padding: 12px;
+
     border: 1px solid rgba(65,173,255,.35);
     border-radius: 14px;
+
     background: #081a3e;
     box-shadow: 0 16px 40px rgba(0,10,35,.28);
+
     z-index: 9998;
+
     flex-direction: column;
     align-items: stretch;
   }
@@ -321,11 +392,19 @@
   .mc-neon-header .mc-nav-link {
     justify-content: flex-start;
   }
+
 }
 
 @media (max-width: 380px) {
   .mc-neon-header .mc-header-logo img {
     width: 145px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-neon-header .mc-nav-link,
+  .mc-neon-header .mc-search-toggle {
+    transition: none;
   }
 }
 </style>
@@ -343,8 +422,7 @@
       <img
         src="{{ '/assets/images/logo-media-core.png' | relative_url }}"
         alt="Media Core"
-        width="245"
-        height="70">
+        width="245">
 
     </a>
 
@@ -355,6 +433,7 @@
       <div class="mc-nav-links"
            id="mc-nav-links">
 
+        <!-- BERANDA -->
         <a
           class="mc-nav-link {% if page.url == '/' %}is-active{% endif %}"
           href="{{ '/' | relative_url }}"
@@ -375,6 +454,7 @@
           Beranda
         </a>
 
+        <!-- SEMUA ARTIKEL -->
         <a
           class="mc-nav-link {% if page.url == '/artikel.html' or page.url == '/artikel/' %}is-active{% endif %}"
           href="{{ '/artikel.html' | relative_url }}"
@@ -396,7 +476,7 @@
 
       </div>
 
-      <!-- SEARCH -->
+      <!-- TOMBOL SEARCH -->
       <button
         type="button"
         class="mc-search-toggle"
@@ -467,7 +547,7 @@
   </div>
 </header>
 
-<!-- DATA ARTIKEL DARI JEKYLL -->
+<!-- DATA ARTIKEL JEKYLL -->
 <script type="application/json" id="mc-search-data">
 [
 {% for post in site.posts %}
@@ -479,6 +559,7 @@
 ]
 </script>
 
+<!-- JAVASCRIPT NAVIGASI DAN PENCARIAN -->
 <script>
 (function () {
   function initMediaCoreHeader() {
@@ -507,12 +588,14 @@
     }
 
     function closeMobile() {
+      if (!navLinks || !mobileBtn) return;
       navLinks.classList.remove('is-open');
       mobileBtn.setAttribute('aria-expanded', 'false');
     }
 
     searchBtn.addEventListener('click', function () {
       var opening = searchPanel.hidden;
+
       searchPanel.hidden = !opening;
       searchBtn.setAttribute(
         'aria-expanded',
@@ -525,19 +608,23 @@
       }
     });
 
-    mobileBtn.addEventListener('click', function () {
-      var opening = !navLinks.classList.contains('is-open');
-      navLinks.classList.toggle('is-open', opening);
-      mobileBtn.setAttribute(
-        'aria-expanded',
-        String(opening)
-      );
+    if (mobileBtn && navLinks) {
+      mobileBtn.addEventListener('click', function () {
+        var opening = !navLinks.classList.contains('is-open');
 
-      if (opening) closeSearch();
-    });
+        navLinks.classList.toggle('is-open', opening);
+        mobileBtn.setAttribute(
+          'aria-expanded',
+          String(opening)
+        );
+
+        if (opening) closeSearch();
+      });
+    }
 
     searchInput.addEventListener('input', function () {
       var query = searchInput.value.trim().toLowerCase();
+
       searchResults.replaceChildren();
 
       if (!query) return;
