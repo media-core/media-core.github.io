@@ -1,69 +1,54 @@
-
 <style>
 /* ==========================================
-   MEDIA CORE - PREMIUM NEON HEADER
+   MEDIA CORE - PREMIUM GRADIENT HEADER
    ========================================== */
 
 .site-header.mc-neon-header {
   position: relative !important;
   width: 100%;
   min-height: 86px;
+
   background: linear-gradient(
     110deg,
-    #030c24 0%,
-    #081a42 45%,
-    #0a2053 75%,
-    #06122f 100%
+    #050d24 0%,
+    #0b1c46 35%,
+    #142d65 70%,
+    #081632 100%
   ) !important;
+
   border: 0 !important;
-  border-bottom: 1px solid rgba(58, 171, 255, .25) !important;
-  box-shadow: 0 4px 20px rgba(0, 28, 91, .12);
-  overflow: visible;
+  border-bottom: 1px solid rgba(68,174,255,.25) !important;
+
+  box-shadow: 0 4px 18px rgba(4,17,49,.12);
   isolation: isolate;
+  overflow: visible;
 }
 
-/* Cahaya biru lembut pada background */
+/* Cahaya gradasi biru-cyan */
 .mc-neon-header::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
+
   background:
     radial-gradient(
-      ellipse at 24% 0%,
-      rgba(0, 169, 255, .15),
-      transparent 45%
+      ellipse at 18% 0%,
+      rgba(40,190,255,.16),
+      transparent 42%
     ),
     radial-gradient(
-      ellipse at 78% 100%,
-      rgba(27, 92, 235, .12),
+      ellipse at 72% 85%,
+      rgba(45,112,255,.18),
       transparent 48%
     );
 }
 
-/* ==========================================
-   GARIS NEON CYAN - VERSI ELEGAN
-   Lebih pendek dan tidak mengganggu logo
-   ========================================== */
-
+/* Tidak menggunakan lengkungan */
 .mc-neon-header::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 28%;
-  height: 30px;
-
-  border-bottom: 1.5px solid rgba(66, 207, 255, .75);
-  border-radius: 0 0 100% 0;
-
-  box-shadow:
-    0 2px 5px rgba(0, 195, 255, .35),
-    0 4px 12px rgba(0, 123, 255, .15);
-
-  pointer-events: none;
-  z-index: 0;
+  content: none !important;
+  display: none !important;
 }
 
 /* ==========================================
@@ -121,6 +106,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+
   margin-left: auto;
   padding: 0;
   border: 0;
@@ -143,10 +129,10 @@
   min-height: 39px;
   padding: 0 17px;
 
-  border: 1px solid rgba(106, 164, 255, .10);
+  border: 1px solid rgba(106,164,255,.10);
   border-radius: 999px;
 
-  background: rgba(2, 12, 40, .76);
+  background: rgba(2,12,40,.76);
   color: #e8f5ff !important;
 
   font-size: 14px;
@@ -161,10 +147,10 @@
     transform .2s ease;
 }
 
-/* Hover tombol */
+/* Hover */
 .mc-neon-header .mc-nav-link:hover {
-  background: rgba(34, 106, 216, .60);
-  border-color: rgba(75, 200, 255, .55);
+  background: rgba(34,106,216,.60);
+  border-color: rgba(75,200,255,.55);
   color: #ffffff !important;
   transform: translateY(-1px);
 }
@@ -178,14 +164,13 @@
   );
 
   color: #ffffff !important;
-  border-color: rgba(130, 222, 255, .55);
+  border-color: rgba(130,222,255,.55);
 
   box-shadow:
-    0 0 10px rgba(45, 153, 255, .40),
-    0 0 18px rgba(35, 132, 255, .15);
+    0 0 10px rgba(45,153,255,.40),
+    0 0 18px rgba(35,132,255,.15);
 }
 
-/* Ikon tombol */
 .mc-neon-header .mc-nav-link svg {
   width: 17px;
   height: 17px;
@@ -193,7 +178,7 @@
 }
 
 /* ==========================================
-   TOMBOL SEARCH
+   SEARCH BUTTON
    ========================================== */
 
 .mc-neon-header .mc-search-toggle {
@@ -205,10 +190,10 @@
   height: 40px;
   padding: 0;
 
-  border: 1px solid rgba(74, 154, 255, .65);
+  border: 1px solid rgba(74,154,255,.65);
   border-radius: 50%;
 
-  background: rgba(5, 20, 58, .65);
+  background: rgba(5,20,58,.65);
   color: #ffffff;
 
   cursor: pointer;
@@ -217,7 +202,7 @@
 
 .mc-neon-header .mc-search-toggle:hover {
   background: #176ce0;
-  box-shadow: 0 0 12px rgba(34, 172, 255, .35);
+  box-shadow: 0 0 12px rgba(34,172,255,.35);
 }
 
 .mc-neon-header .mc-search-toggle svg {
@@ -226,7 +211,7 @@
 }
 
 /* ==========================================
-   PANEL PENCARIAN
+   SEARCH PANEL
    ========================================== */
 
 .mc-neon-header .mc-search-panel {
@@ -238,11 +223,11 @@
   padding: 18px;
   box-sizing: border-box;
 
-  border: 1px solid rgba(65, 173, 255, .35);
+  border: 1px solid rgba(65,173,255,.35);
   border-radius: 15px;
 
   background: #081a3e;
-  box-shadow: 0 16px 40px rgba(0, 10, 35, .28);
+  box-shadow: 0 16px 40px rgba(0,10,35,.28);
 
   z-index: 9999;
 }
@@ -277,10 +262,9 @@
 
 .mc-neon-header .mc-search-input:focus {
   border-color: #35d5ff;
-  box-shadow: 0 0 0 3px rgba(53, 213, 255, .16);
+  box-shadow: 0 0 0 3px rgba(53,213,255,.16);
 }
 
-/* Hasil pencarian */
 .mc-neon-header .mc-search-results {
   max-height: 280px;
   overflow-y: auto;
@@ -309,7 +293,7 @@
   font-size: 13px;
 }
 
-/* Tombol hamburger disembunyikan di desktop */
+/* Hamburger desktop */
 .mc-neon-header .mc-mobile-toggle {
   display: none;
 }
@@ -334,18 +318,11 @@
     width: 175px;
   }
 
-  /* Lengkungan lebih pendek di HP */
-  .mc-neon-header::after {
-    width: 35%;
-    height: 18px;
-    opacity: .65;
-  }
-
   .mc-neon-header .mc-header-nav {
     gap: 8px;
   }
 
-  /* Tombol hamburger */
+  /* Hamburger */
   .mc-neon-header .mc-mobile-toggle {
     display: inline-flex;
     align-items: center;
@@ -363,7 +340,7 @@
     cursor: pointer;
   }
 
-  /* Menu dropdown mobile */
+  /* Menu dropdown */
   .mc-neon-header .mc-nav-links {
     display: none;
     position: absolute;
@@ -476,7 +453,7 @@
 
       </div>
 
-      <!-- TOMBOL SEARCH -->
+      <!-- SEARCH -->
       <button
         type="button"
         class="mc-search-toggle"
