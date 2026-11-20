@@ -1,267 +1,590 @@
+
 <style>
 /* ==========================================
-   MEDIA CORE - PREMIUM HEADER ALL IN
+   MEDIA CORE - PREMIUM NEON HEADER
    ========================================== */
 
-.site-header {
-  background: #f4f7ff !important;
-  border-top: 0 !important;
-  border-bottom: 1px solid #dce5f3 !important;
-  box-shadow: 0 2px 12px rgba(15, 35, 75, 0.04);
+.site-header.mc-neon-header {
+  position: relative !important;
   width: 100%;
+  min-height: 86px;
+  background: linear-gradient(
+    110deg,
+    #030c24 0%,
+    #081a42 45%,
+    #0a2053 75%,
+    #06122f 100%
+  ) !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(58, 171, 255, .35) !important;
+  box-shadow: 0 4px 20px rgba(0, 28, 91, .12);
+  overflow: visible;
+  isolation: isolate;
 }
 
-/* ==========================================
-   KONTAINER HEADER
-   Sejajar dengan hero dan konten homepage
-   ========================================== */
+/* Efek cahaya lembut */
+.mc-neon-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 24% 0%,
+      rgba(0, 169, 255, .20),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 78% 100%,
+      rgba(27, 92, 235, .14),
+      transparent 48%
+    );
+}
 
-.site-header > .mc-header-container {
+/* Garis neon melengkung */
+.mc-neon-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 43%;
+  height: 64px;
+  border-bottom: 2px solid #39cfff;
+  border-radius: 0 0 100% 0;
+  box-shadow:
+    0 3px 7px rgba(0, 209, 255, .8),
+    0 6px 18px rgba(0, 123, 255, .45);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Kontainer header - mengikuti hero */
+.mc-neon-header .mc-header-container {
+  position: relative;
+  z-index: 2;
   width: calc(100% - 48px) !important;
-  max-width: 1320px !important;
+  max-width: 1400px !important;
+  min-height: 86px;
   margin: 0 auto !important;
   padding: 0 !important;
-  box-sizing: border-box !important;
-
-  display: flex !important;
+  box-sizing: border-box;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  min-height: 92px;
 }
 
-/* ==========================================
-   LOGO MEDIA CORE
-   ========================================== */
-
-.site-header .mc-header-logo {
-  display: inline-flex !important;
+/* Logo asli MEDIA CORE */
+.mc-neon-header .mc-header-logo {
+  display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
   margin: 0 !important;
   padding: 0 !important;
   line-height: 1;
   text-decoration: none;
-  float: none !important;
-  position: static !important;
-  transform: none !important;
 }
 
-.site-header .mc-header-logo img {
+.mc-neon-header .mc-header-logo img {
   display: block;
-  width: 230px;
+  width: 245px;
   max-width: 100%;
   height: auto;
-  border: 0;
+  object-fit: contain;
 }
 
-/* ==========================================
-   NAVIGASI DESKTOP
-   ========================================== */
-
-.site-header .mc-header-nav {
+/* Navigasi */
+.mc-neon-header .mc-header-nav {
   position: relative;
-  flex: 0 0 auto;
-  margin: 0 0 0 auto !important;
-  padding: 0 !important;
-  border: 0 !important;
-  background: transparent !important;
-}
-
-.site-header .mc-header-nav .trigger {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 30px;
+  gap: 12px;
+  margin-left: auto;
 }
 
-.site-header .mc-header-nav .page-link {
-  display: inline-block;
-  margin: 0 !important;
-  padding: 8px 0;
-  color: #172b4d !important;
-  font-size: 15px;
+.mc-neon-header .mc-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mc-neon-header .mc-nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 39px;
+  padding: 0 17px;
+  border: 1px solid rgba(106, 164, 255, .10);
+  border-radius: 999px;
+  background: rgba(2, 12, 40, .76);
+  color: #e8f5ff !important;
+  font-size: 14px;
   font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  text-decoration: none !important;
+  transition: .2s ease;
+}
+
+.mc-neon-header .mc-nav-link:hover {
+  background: rgba(34, 106, 216, .6);
+  border-color: rgba(75, 200, 255, .55);
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+.mc-neon-header .mc-nav-link.is-active {
+  background: linear-gradient(
+    110deg,
+    #2265e8,
+    #37baff
+  );
+  color: #fff !important;
+  border-color: rgba(130, 222, 255, .55);
+  box-shadow:
+    0 0 12px rgba(45, 153, 255, .55),
+    0 0 22px rgba(35, 132, 255, .22);
+}
+
+.mc-neon-header .mc-nav-link svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+/* Tombol pencarian */
+.mc-neon-header .mc-search-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(74, 154, 255, .65);
+  border-radius: 50%;
+  background: rgba(5, 20, 58, .65);
+  color: #fff;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.mc-neon-header .mc-search-toggle:hover {
+  background: #176ce0;
+  box-shadow: 0 0 14px rgba(34, 172, 255, .5);
+}
+
+.mc-neon-header .mc-search-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Panel pencarian */
+.mc-neon-header .mc-search-panel {
+  position: absolute;
+  top: calc(100% + 15px);
+  right: 0;
+  width: min(370px, calc(100vw - 32px));
+  padding: 18px;
+  box-sizing: border-box;
+  border: 1px solid rgba(65, 173, 255, .35);
+  border-radius: 15px;
+  background: #081a3e;
+  box-shadow: 0 16px 40px rgba(0, 10, 35, .28);
+  z-index: 9999;
+}
+
+.mc-neon-header .mc-search-panel[hidden] {
+  display: none !important;
+}
+
+.mc-neon-header .mc-search-panel label {
+  display: block;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.mc-neon-header .mc-search-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid #3964a4;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  color: #172b4d;
+  font-size: 14px;
+}
+
+.mc-neon-header .mc-search-input:focus {
+  border-color: #35d5ff;
+  box-shadow: 0 0 0 3px rgba(53, 213, 255, .16);
+}
+
+.mc-neon-header .mc-search-results {
+  max-height: 280px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.mc-neon-header .mc-search-result {
+  display: block;
+  padding: 10px 6px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  color: #eaf7ff !important;
+  font-size: 13px;
   line-height: 1.5;
   text-decoration: none !important;
-  white-space: nowrap;
-  transition: color .2s ease;
 }
 
-.site-header .mc-header-nav .page-link:hover {
-  color: #087bdf !important;
+.mc-neon-header .mc-search-result:hover {
+  color: #58dcff !important;
 }
 
-/* Checkbox menu disembunyikan */
-.site-header .mc-nav-trigger {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  overflow: hidden;
+.mc-neon-header .mc-search-empty {
+  margin: 10px 0 0;
+  color: #b9d3ed;
+  font-size: 13px;
 }
 
-/* Hamburger hanya tampil di mobile */
-.site-header .mc-menu-toggle {
+/* Hamburger */
+.mc-neon-header .mc-mobile-toggle {
   display: none;
 }
 
 /* ==========================================
-   RESPONSIVE TABLET
+   RESPONSIVE
    ========================================== */
 
-@media screen and (max-width: 900px) {
-
-  .site-header > .mc-header-container {
-    width: calc(100% - 40px) !important;
-    min-height: 78px;
+@media (max-width: 700px) {
+  .site-header.mc-neon-header {
+    min-height: 72px;
   }
 
-  .site-header .mc-header-logo img {
-    width: 205px;
-  }
-
-  .site-header .mc-header-nav .trigger {
-    gap: 20px;
-  }
-
-}
-
-/* ==========================================
-   RESPONSIVE MOBILE
-   ========================================== */
-
-@media screen and (max-width: 600px) {
-
-  .site-header > .mc-header-container {
+  .mc-neon-header .mc-header-container {
     width: calc(100% - 32px) !important;
-    min-height: 68px;
-    gap: 12px;
+    min-height: 72px;
+    gap: 10px;
   }
 
-  .site-header .mc-header-logo img {
-    width: 180px;
+  .mc-neon-header .mc-header-logo img {
+    width: 175px;
   }
 
-  .site-header .mc-header-nav {
-    position: relative;
-    margin-left: auto !important;
+  .mc-neon-header::after {
+    width: 58%;
+    height: 42px;
   }
 
-  .site-header .mc-menu-toggle {
-    display: flex;
+  .mc-neon-header .mc-header-nav {
+    gap: 8px;
+  }
+
+  .mc-neon-header .mc-mobile-toggle {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
-    border: 1px solid #dce5f3;
-    border-radius: 10px;
-    background: #ffffff;
+    width: 39px;
+    height: 39px;
+    padding: 0;
+    border: 1px solid rgba(74,154,255,.65);
+    border-radius: 50%;
+    background: rgba(5,20,58,.65);
+    color: #fff;
     cursor: pointer;
   }
 
-  .site-header .mc-menu-toggle svg {
-    display: block;
-  }
-
-  .site-header .mc-header-nav .trigger {
+  .mc-neon-header .mc-nav-links {
     display: none;
-  }
-
-  .site-header .mc-nav-trigger:checked ~ .trigger {
-    display: flex;
     position: absolute;
-    top: calc(100% + 10px);
+    top: calc(100% + 15px);
     right: 0;
-    z-index: 9999;
+    min-width: 190px;
+    padding: 12px;
+    border: 1px solid rgba(65,173,255,.35);
+    border-radius: 14px;
+    background: #081a3e;
+    box-shadow: 0 16px 40px rgba(0,10,35,.28);
+    z-index: 9998;
     flex-direction: column;
     align-items: stretch;
-    gap: 0;
-    min-width: 190px;
-    padding: 8px 14px;
-    background: #ffffff;
-    border: 1px solid #dce5f3;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(15, 35, 75, 0.14);
   }
 
-  .site-header .mc-header-nav .page-link {
-    display: block;
-    padding: 12px 6px;
+  .mc-neon-header .mc-nav-links.is-open {
+    display: flex;
   }
 
+  .mc-neon-header .mc-nav-link {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 380px) {
+  .mc-neon-header .mc-header-logo img {
+    width: 145px;
+  }
 }
 </style>
 
-<header class="site-header" role="banner">
+<header class="site-header mc-neon-header"
+        role="banner">
 
   <div class="mc-header-container">
 
-    <!-- LOGO MEDIA CORE -->
-    <a
-      class="mc-header-logo"
-      rel="author"
-      href="{{ '/' | relative_url }}"
-      aria-label="Media Core - Beranda">
+    <!-- LOGO ASLI MEDIA CORE -->
+    <a class="mc-header-logo"
+       href="{{ '/' | relative_url }}"
+       aria-label="Media Core - Beranda">
 
       <img
         src="{{ '/assets/images/logo-media-core.png' | relative_url }}"
         alt="Media Core"
-        width="230"
-        style="height:auto;">
+        width="245"
+        height="70">
 
     </a>
 
-    <!-- NAVIGASI MEDIA CORE -->
-    {% assign default_paths = site.pages | map: "path" %}
-    {% assign page_paths = site.header_pages | default: default_paths %}
+    <!-- NAVIGASI -->
+    <nav class="mc-header-nav"
+         aria-label="Navigasi utama">
 
-    {% if page_paths %}
-    <nav class="mc-header-nav" aria-label="Navigasi utama">
+      <div class="mc-nav-links"
+           id="mc-nav-links">
 
-      <input
-        type="checkbox"
-        id="mc-nav-trigger"
-        class="mc-nav-trigger">
+        <a
+          class="mc-nav-link {% if page.url == '/' %}is-active{% endif %}"
+          href="{{ '/' | relative_url }}"
+          {% if page.url == '/' %}aria-current="page"{% endif %}>
 
-      <label
-        for="mc-nav-trigger"
-        class="mc-menu-toggle"
-        aria-label="Buka menu navigasi">
+          <svg viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="1.8"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               aria-hidden="true">
+            <path d="m3 10 9-7 9 7"/>
+            <path d="M5 9v12h14V9"/>
+            <path d="M9 21v-8h6v8"/>
+          </svg>
 
-        <svg
-          viewBox="0 0 24 24"
-          width="22"
-          height="22"
-          fill="none"
-          stroke="#172b4d"
-          stroke-width="2"
-          stroke-linecap="round">
+          Beranda
+        </a>
 
-          <path d="M4 6h16"/>
-          <path d="M4 12h16"/>
-          <path d="M4 18h16"/>
+        <a
+          class="mc-nav-link {% if page.url == '/artikel.html' or page.url == '/artikel/' %}is-active{% endif %}"
+          href="{{ '/artikel.html' | relative_url }}"
+          {% if page.url == '/artikel.html' or page.url == '/artikel/' %}aria-current="page"{% endif %}>
 
+          <svg viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="1.8"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               aria-hidden="true">
+            <rect x="4" y="3" width="16" height="18" rx="2"/>
+            <path d="M8 8h8M8 12h8M8 16h5"/>
+          </svg>
+
+          Semua Artikel
+        </a>
+
+      </div>
+
+      <!-- SEARCH -->
+      <button
+        type="button"
+        class="mc-search-toggle"
+        id="mc-search-toggle"
+        aria-label="Cari artikel"
+        aria-expanded="false"
+        aria-controls="mc-search-panel">
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             aria-hidden="true">
+          <circle cx="10.8" cy="10.8" r="7"/>
+          <path d="m16 16 5 5"/>
         </svg>
 
-      </label>
+      </button>
 
-      <div class="trigger">
-        {% for path in page_paths %}
-          {% assign my_page = site.pages | where: "path", path | first %}
-          {% if my_page.title %}
-            <a
-              class="page-link"
-              href="{{ my_page.url | relative_url }}">
-              {{ my_page.title | escape }}
-            </a>
-          {% endif %}
-        {% endfor %}
+      <!-- HAMBURGER MOBILE -->
+      <button
+        type="button"
+        class="mc-mobile-toggle"
+        id="mc-mobile-toggle"
+        aria-label="Buka menu"
+        aria-expanded="false"
+        aria-controls="mc-nav-links">
+
+        <svg viewBox="0 0 24 24"
+             width="21"
+             height="21"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+
+      </button>
+
+      <!-- PANEL SEARCH -->
+      <div class="mc-search-panel"
+           id="mc-search-panel"
+           hidden>
+
+        <label for="mc-search-input">
+          Cari Artikel MEDIA CORE
+        </label>
+
+        <input
+          type="search"
+          class="mc-search-input"
+          id="mc-search-input"
+          placeholder="Ketik judul artikel..."
+          autocomplete="off">
+
+        <div class="mc-search-results"
+             id="mc-search-results"
+             aria-live="polite">
+        </div>
+
       </div>
 
     </nav>
-    {% endif %}
 
   </div>
-
 </header>
+
+<!-- DATA ARTIKEL DARI JEKYLL -->
+<script type="application/json" id="mc-search-data">
+[
+{% for post in site.posts %}
+{
+  "title": {{ post.title | jsonify }},
+  "url": {{ post.url | relative_url | jsonify }}
+}{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]
+</script>
+
+<script>
+(function () {
+  function initMediaCoreHeader() {
+    var searchBtn = document.getElementById('mc-search-toggle');
+    var searchPanel = document.getElementById('mc-search-panel');
+    var searchInput = document.getElementById('mc-search-input');
+    var searchResults = document.getElementById('mc-search-results');
+    var mobileBtn = document.getElementById('mc-mobile-toggle');
+    var navLinks = document.getElementById('mc-nav-links');
+    var searchData = document.getElementById('mc-search-data');
+
+    if (!searchBtn || !searchPanel || !searchInput ||
+        !searchResults || !searchData) return;
+
+    var articles = [];
+
+    try {
+      articles = JSON.parse(searchData.textContent);
+    } catch (e) {
+      articles = [];
+    }
+
+    function closeSearch() {
+      searchPanel.hidden = true;
+      searchBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function closeMobile() {
+      navLinks.classList.remove('is-open');
+      mobileBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    searchBtn.addEventListener('click', function () {
+      var opening = searchPanel.hidden;
+      searchPanel.hidden = !opening;
+      searchBtn.setAttribute(
+        'aria-expanded',
+        String(opening)
+      );
+
+      if (opening) {
+        closeMobile();
+        searchInput.focus();
+      }
+    });
+
+    mobileBtn.addEventListener('click', function () {
+      var opening = !navLinks.classList.contains('is-open');
+      navLinks.classList.toggle('is-open', opening);
+      mobileBtn.setAttribute(
+        'aria-expanded',
+        String(opening)
+      );
+
+      if (opening) closeSearch();
+    });
+
+    searchInput.addEventListener('input', function () {
+      var query = searchInput.value.trim().toLowerCase();
+      searchResults.replaceChildren();
+
+      if (!query) return;
+
+      var matches = articles.filter(function (article) {
+        return article.title.toLowerCase().includes(query);
+      }).slice(0, 8);
+
+      if (!matches.length) {
+        var empty = document.createElement('p');
+        empty.className = 'mc-search-empty';
+        empty.textContent = 'Artikel tidak ditemukan.';
+        searchResults.appendChild(empty);
+        return;
+      }
+
+      matches.forEach(function (article) {
+        var link = document.createElement('a');
+        link.className = 'mc-search-result';
+        link.href = article.url;
+        link.textContent = article.title;
+        searchResults.appendChild(link);
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.mc-header-nav')) {
+        closeSearch();
+        closeMobile();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeSearch();
+        closeMobile();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener(
+      'DOMContentLoaded',
+      initMediaCoreHeader
+    );
+  } else {
+    initMediaCoreHeader();
+  }
+})();
+</script>
