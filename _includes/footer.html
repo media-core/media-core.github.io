@@ -1,0 +1,117 @@
+
+<style>
+/* ==========================================
+   MEDIA CORE - PREMIUM FOOTER FINAL
+   ========================================== */
+
+.site-footer {
+  background: linear-gradient(
+    110deg,
+    #101F43 0%,
+    #142F65 55%,
+    #164DAD 100%
+  ) !important;
+
+  border-top: 3px solid #00D9F5 !important;
+  padding: 38px 0 28px !important;
+  color: #FFFFFF !important;
+  box-shadow: none !important;
+}
+
+/* Kontainer footer */
+.site-footer .wrapper {
+  width: calc(100% - 48px) !important;
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Susunan konten */
+.mc-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Nama MEDIA CORE */
+.mc-footer-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #FFFFFF !important;
+  font-size: 21px;
+  line-height: 1.4;
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+
+/* Deskripsi */
+.mc-footer-description {
+  margin: 0 !important;
+  color: #E0F5FF !important;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Copyright */
+.mc-footer-copyright {
+  margin: 8px 0 0 !important;
+  color: #B8D9F5 !important;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Responsif untuk HP */
+@media screen and (max-width: 600px) {
+  .site-footer {
+    padding: 28px 0 24px !important;
+  }
+
+  .site-footer .wrapper {
+    width: calc(100% - 32px) !important;
+  }
+
+  .mc-footer {
+    gap: 13px;
+  }
+
+  .mc-footer-title {
+    font-size: 19px;
+  }
+
+  .mc-footer-description {
+    font-size: 14px;
+  }
+
+  .mc-footer-copyright {
+    font-size: 12px;
+  }
+}
+</style>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="wrapper">
+
+    <div class="mc-footer">
+
+      <!-- NAMA MEDIA -->
+      <h2 class="mc-footer-title">
+        MEDIA CORE
+      </h2>
+
+      <!-- DESKRIPSI -->
+      <p class="mc-footer-description">
+        Informasi teknologi, budaya, dan hiburan digital.
+      </p>
+
+      <!-- COPYRIGHT -->
+      <p class="mc-footer-copyright">
+        &copy; {{ site.time | date: '%Y' }} MEDIA CORE.
+        All Rights Reserved.
+      </p>
+
+    </div>
+
+  </div>
+</footer>
