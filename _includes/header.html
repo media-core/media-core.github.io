@@ -1,7 +1,135 @@
+<style>
+/* =========================================
+   MEDIA CORE - HEADER PREMIUM RESPONSIVE
+   ========================================= */
+
+.site-header {
+  background: #f4f7ff;
+  border-top: 0;
+  border-bottom: 1px solid #dce5f3;
+  box-shadow: 0 2px 12px rgba(15, 35, 75, 0.04);
+}
+
+/* Samakan lebar header dengan hero homepage */
+.site-header .wrapper {
+  width: calc(100% - 86px) !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 78px;
+}
+
+/* Logo di sisi kiri */
+.site-header .site-title {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1;
+}
+
+.site-header .site-title img {
+  display: block;
+  width: 230px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Menu navigasi di sisi kanan */
+.site-header .site-nav {
+  position: static;
+  float: none !important;
+  margin: 0 0 0 auto !important;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  line-height: normal;
+}
+
+.site-header .site-nav .trigger {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.site-header .site-nav .page-link {
+  display: inline-block;
+  margin: 0 !important;
+  padding: 8px 0;
+  color: #172b4d;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color .2s ease;
+}
+
+.site-header .site-nav .page-link:hover {
+  color: #087bdf;
+}
+
+/* Tampilan tablet dan HP */
+@media screen and (max-width: 600px) {
+  .site-header .wrapper {
+    width: calc(100% - 32px) !important;
+    min-height: 68px;
+    gap: 12px;
+  }
+
+  .site-header .site-title img {
+    width: 185px;
+  }
+
+  /* Kembalikan menu hamburger bawaan Minima */
+  .site-header .site-nav {
+    position: relative;
+    margin-left: auto !important;
+    border-radius: 8px;
+  }
+
+  .site-header .site-nav label[for="nav-trigger"] {
+    cursor: pointer;
+  }
+
+  .site-header .site-nav .trigger {
+    display: none;
+  }
+
+  .site-header .site-nav input:checked ~ .trigger {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 1000;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    min-width: 180px;
+    padding: 8px 14px;
+    border: 1px solid #dce5f3;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(15,35,75,.12);
+  }
+
+  .site-header .site-nav .page-link {
+    padding: 12px 6px;
+  }
+}
+</style>
 
 <header class="site-header" role="banner">
   <div class="wrapper">
 
+    <!-- LOGO MEDIA CORE -->
     <a class="site-title"
        rel="author"
        href="{{ '/' | relative_url }}"
@@ -11,21 +139,26 @@
         src="{{ '/assets/images/logo-media-core.png' | relative_url }}"
         alt="Media Core"
         width="230"
-        style="max-width:100%;height:auto;vertical-align:middle;">
+        height="auto">
 
     </a>
 
+    <!-- NAVIGASI -->
     {% assign default_paths = site.pages | map: "path" %}
     {% assign page_paths = site.header_pages | default: default_paths %}
 
     {% if page_paths %}
-      <nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+      <nav class="site-nav" aria-label="Navigasi utama">
+
+        <input type="checkbox"
+               id="nav-trigger"
+               class="nav-trigger">
+
         <label for="nav-trigger">
           <span class="menu-icon">
             <svg viewBox="0 0 18 15" width="18" height="15">
               <path fill="#424242"
-                    d="M18 1.484c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 1.484C0 .665.665 0 1.484 0h15.032C17.335 0 18 .665 18 1.484zm0 6.016c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 7.5c0-.82.665-1.484 1.484-1.484h15.032C17.335 6.016 18 6.68 18 7.5zm0 6.016c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 13.516c0-.82.665-1.484 1.484-1.484h15.032c.82 0 1.484.665 1.484 1.484z"/>
+                    d="M18 1.484c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 1.484C0 .665.665 0 1.484 0h15.032C17.335 0 18 .665 18 1.484zm0 6.016c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 7.5c0-.82.665-1.484 1.484-1.484h15.032C17.335 6.016 18 6.68 18 7.5zm0 6.016c0 .82-.665 1.484-1.484 1.484H1.484A1.484 1.484 0 0 1 0 13.516c0-.82-.665 1.484-1.484 1.484h15.032c.82 0 1.484.665 1.484 1.484z"/>
             </svg>
           </span>
         </label>
@@ -41,6 +174,7 @@
             {% endif %}
           {% endfor %}
         </div>
+
       </nav>
     {% endif %}
 
